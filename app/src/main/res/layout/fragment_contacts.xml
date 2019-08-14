@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_contactsLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:src="@drawable/img_app_logo"
+            android:layout_marginTop="@dimen/margin_extra"
+            app:layout_constraintEnd_toEndOf="@id/contacts_gl2"
+            app:layout_constraintStart_toStartOf="@id/contacts_gl1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/contacts_gl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/contacts_gl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <View
+            android:id="@+id/contacts_v1"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/iv_contactsLogo" />
+
+        <ImageView
+            android:id="@+id/iv_contactsMap"
+            android:layout_width="0dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:src="@drawable/img_map"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contacts_v1" />
+
+        <ImageView
+            android:id="@+id/iv_contactsGeoMarker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_extra"
+            android:layout_marginLeft="@dimen/margin_extra"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:src="@drawable/img_geo_marker"
+            app:layout_constraintEnd_toEndOf="@id/contacts_gl3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_contactsMap" />
+
+        <TextView
+            android:id="@+id/tv_contactsLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_extra"
+            android:layout_marginRight="@dimen/margin_extra"
+            android:text="@string/location"
+            android:textColor="@color/colorText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_contactsGeoMarker"
+            app:layout_constraintTop_toTopOf="@id/iv_contactsGeoMarker" />
+
+        <ImageView
+            android:id="@+id/iv_contactsPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_extra"
+            android:layout_marginLeft="@dimen/margin_extra"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:src="@drawable/img_phone"
+            app:layout_constraintEnd_toEndOf="@id/contacts_gl3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_contactsLocation" />
+
+        <TextView
+            android:id="@+id/tv_contactsNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:textSize="16sp"
+            android:autoLink="phone"
+            android:layout_marginEnd="@dimen/margin_extra"
+            android:layout_marginRight="@dimen/margin_extra"
+            android:text="@string/phone_number"
+            android:textColor="@color/colorText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_contactsGeoMarker"
+            app:layout_constraintTop_toTopOf="@id/iv_contactsPhone" />
+
+        <TextView
+            android:id="@+id/tv_phoneSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_subTitle"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_contactsNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contactsNumber" />
+
+        <ImageView
+            android:id="@+id/iv_contactsMail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_extra"
+            android:layout_marginLeft="@dimen/margin_extra"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:src="@drawable/img_mail"
+            app:layout_constraintEnd_toEndOf="@id/contacts_gl3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_phoneSubTitle" />
+
+        <TextView
+            android:id="@+id/tv_contactsMail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_extra"
+            android:layout_marginRight="@dimen/margin_extra"
+            android:text="@string/mail_bionagro"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/iv_contactsGeoMarker"
+            app:layout_constraintTop_toTopOf="@id/iv_contactsMail" />
+
+        <TextView
+            android:id="@+id/tv_mailSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mail_subTitle"
+            app:layout_constraintStart_toStartOf="@+id/tv_contactsNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contactsMail" />
+
+        <ImageView
+            android:id="@+id/iv_contactsInternet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_extra"
+            android:layout_marginLeft="@dimen/margin_extra"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:src="@drawable/img_internet"
+            app:layout_constraintEnd_toEndOf="@id/contacts_gl3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mailSubTitle" />
+
+        <TextView
+            android:id="@+id/tv_contactsSite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_extra"
+            android:layout_marginRight="@dimen/margin_extra"
+            android:textSize="16sp"
+            android:text="@string/text_site"
+            android:textColor="@color/colorText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_contactsGeoMarker"
+            app:layout_constraintTop_toTopOf="@id/iv_contactsInternet" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/contacts_gl3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

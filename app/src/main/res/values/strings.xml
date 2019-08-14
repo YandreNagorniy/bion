@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Bion intelligence</string>
+    <string name="select_culture">Выберите культуру</string>
+    <string name="number_piker_text">700</string>
+    <string name="yield_text">Задайте урожайность, ц/га</string>
+    <string name="text_chemistry_calculator">Необходимое количество \n кг/га д.в.</string>
+    <string name="text_soil_factor">мг/кг</string>
+    <string name="text_soil_factors">Почвенные факторы</string>
+    <string name="text_humus_reserves">Запасы гумуса, %</string>
+    <string name="text_moisture_supply">Влагообеспеченность</string>
+    <string name="location"><u>350075 г. Краснодар, ул Стасова,\n д. 183</u></string>
+    <string name="phone_number">7 (861) 298-55-55</string>
+    <string name="mail_bionagro">mail@BionAgro.ru</string>
+    <string name="mail_subTitle">вопросы, отзывы и предложения</string>
+    <string name="phone_subTitle">тел./факс</string>
+    <string name="text_site">BionAgro.ru</string>
+
+    <string name="text_info1">«Бион Интеллект» – программа управле-\n ния питанием сельскохозяйственных \nкультур,
+        направленная на обеспечение \nрастений в критические фазы роста и \n развития комплексом необходимых микроэлементов.\n\n
+        Микроэлементы принимают участие во \nмногих физиологических и
+        биохимичес-\nких процессах, являются обязательной \nчастью многих ферментов, витаминов, \nростовых веществ, поэтому
+        недостаток \nтого или иного микроэлемента может \nрезко повлиять как на величину урожая, \nтак и на его качество.\n\n
+        При недостатке в почвах доступных форм \nмикроэлементов наблюдаются \nспецифические заболевания культур и \nскрытое голодание,
+        вследствие чего не в \nполной мере используют имеющиеся \nресурсы влагу, удобрения,</string>
+
+    <string name="text_info2">фотосинтетически-активную радиацию, \nони дают низкий и неполноценный по
+        \nкачеству урожай. При выборе удобрения \nдля растений кроме свойств самого \nудобрения необходимо знать и учитывать
+        \nпочвенно-климатические условия района \nвозделывания и биологические особен-\nности выращиваемой культуры.\n\n
+        Мы представляем Вам уникальное\n решение для каждой сельскохозяйствен-\nной культуры: комплекс микроэлементов
+        \n«Бион-Интеллект», количественно \nрассчитанных для конкретной вегетаци-\nонной фазы, в которой он окажет
+        \nмаксимальную эффективность на \nметаболизм растений. Мобильное \nприложение, позволяет рассчитать норму
+        \nпрепаратов «Бион-Интеллект» по \nзаданным почвенно-климатическим \nусловиям и условиям минерального питания.</string>
+    <string name="text_settings2_mineral">Минеральный \n (NO3+NH4)</string>
+    <string name="text_settings2_shelochnoy">Щелочногидролизуемый \n (Корнфилд)</string>
+    <string name="text_settings2_lite">Легкодиролизованый \n (Тюрин-Кононова)</string>
+    <string name="text_machigin">Мачигин</string>
+    <string name="text_chirikov">Чириков</string>
+    <string name="text_kirsanov">Кирсанов</string>
+    <string name="text_calculator_necessary_bion">Необходимое количество</string>
+    <string name="text_calculator_necessary_bion2"> Бион-Интеллект, &lt;sup&gt;&lt;small&gt;тм&lt;/small&gt;&lt;/sup&gt; л</string>
+    <string name="cultureId">culture_id</string>
+</resources>

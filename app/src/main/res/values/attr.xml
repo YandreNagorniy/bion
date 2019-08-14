@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="item_name" format="string" />
+    <attr name="item_text" format="string" />
+    <attr name="item_value" format="integer" />
+
+    <declare-styleable name="ChemistryView">
+        <attr name="item_name" />
+        <attr name="item_text" />
+        <attr name="item_value" />
+    </declare-styleable>
+
+    <declare-styleable name="SoilFactorView">
+        <attr name="item_name" />
+        <attr name="item_text" />
+        <attr name="sf_value" format="float" />
+        <attr name="sf_value_int" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="PhaseView">
+        <attr name="phase_img" format="integer" />
+        <attr name="phase_value" format="float" />
+    </declare-styleable>
+
+    <!--<declare-styleable name="NumberPicker">-->
+    <!--<attr name="min" format="integer"/>-->
+    <!--<attr name="max" format="integer"/>-->
+    <!--<attr name="value" format="integer"/>-->
+    <!--<attr name="unit" format="integer" />-->
+    <!--<attr name="custom_layout" format="reference" />-->
+    <!--<attr name="focusable" format="boolean" />-->
+    <!--</declare-styleable>-->
+
+</resources>

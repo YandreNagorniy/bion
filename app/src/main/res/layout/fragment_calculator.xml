@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="element"
+            type="com.example.bionintelligence.data.model.CalculatorModel" />
+
+        <variable
+            name="cultureModel"
+            type="com.example.bionintelligence.data.model.TestCultureModel" />
+
+        <variable
+            name="phaseValue"
+            type="com.example.bionintelligence.data.model.TestPhasesModel" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingEnd="16dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_selectCulture"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_values_light_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/calculator_cultureName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{cultureModel.cultureName}"
+                android:textColor="@color/colorText"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Выберите культуру" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_setYield"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/yield_text"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_selectCulture" />
+
+        <com.travijuu.numberpicker.library.NumberPicker
+            android:id="@+id/numberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:custom_layout="@layout/custom_number_picker_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_setYield"
+            app:max="0"
+            app:min="0"
+            app:unit="0"
+            app:value="0" />
+
+        <EditText
+            android:id="@+id/et_newPrdouctive"
+            android:layout_width="72dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_values_light_green"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/number_piker_text"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/numberPicker" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cv_Chemistry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounder_square"
+            android:paddingStart="6dp"
+            android:focusableInTouchMode="true"
+            android:paddingEnd="6dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/numberPicker">
+
+            <TextView
+                android:id="@+id/tv_chemistryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/text_chemistry_calculator"
+                android:textColor="@color/colorText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.example.bionintelligence.presentation.custom.ChemistryView
+                android:id="@+id/chv_N"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:item_name="N"
+                app:item_text="Азот"
+                app:item_value="@{element.n}"
+                app:layout_constraintEnd_toStartOf="@+id/chv_P2O5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_chemistryTitle" />
+
+            <com.example.bionintelligence.presentation.custom.ChemistryView
+                android:id="@+id/chv_P2O5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                app:item_name="P2O5"
+                app:item_text="Фосфор"
+                app:item_value="@{element.p2O5}"
+                app:layout_constraintEnd_toStartOf="@id/chv_K2O"
+                app:layout_constraintStart_toEndOf="@id/chv_N"
+                app:layout_constraintTop_toTopOf="@+id/chv_N" />
+
+            <com.example.bionintelligence.presentation.custom.ChemistryView
+                android:id="@+id/chv_K2O"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_name="K2O"
+                app:item_text="Калий"
+                app:item_value="@{element.k2O}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/chv_P2O5"
+                app:layout_constraintTop_toTopOf="@+id/chv_N" />
+
+            <com.example.bionintelligence.presentation.custom.ChemistryView
+                android:id="@+id/chv_S"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                app:item_name="S"
+                app:item_text="Сера"
+                app:item_value="@{element.s}"
+                app:layout_constraintEnd_toStartOf="@+id/chv_CaO"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chv_N" />
+
+            <com.example.bionintelligence.presentation.custom.ChemistryView
+                android:id="@+id/chv_CaO"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                app:item_name="CaO"
+                app:item_text="Кальций"
+                app:item_value="@{element.caO}"
+                app:layout_constraintEnd_toStartOf="@id/chv_MgO"
+                app:layout_constraintStart_toEndOf="@id/chv_S"
+                app:layout_constraintTop_toTopOf="@+id/chv_S" />
+
+            <com.example.bionintelligence.presentation.custom.ChemistryView
+                android:id="@+id/chv_MgO"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:item_name="MgO"
+                app:item_text="Магний"
+                app:item_value="@{element.mgO}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/chv_CaO"
+                app:layout_constraintTop_toTopOf="@+id/chv_S" />
+
+            <com.example.bionintelligence.presentation.custom.ChemistryView
+                android:id="@+id/chv_H2O"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                app:item_name="H2O"
+                app:item_text="Вода, мм"
+                app:item_value="@{element.h2O}"
+                app:layout_constraintEnd_toEndOf="@id/chv_CaO"
+                app:layout_constraintStart_toStartOf="@id/chv_CaO"
+                app:layout_constraintTop_toBottomOf="@id/chv_CaO" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_necessaryBion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/text_calculator_necessary_bion"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_necessaryBion2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_Chemistry" />
+
+        <TextView
+            android:id="@+id/tv_necessaryBion2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion" />
+
+        <com.example.bionintelligence.presentation.custom.PhaseView
+            android:id="@+id/phaseView_one"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/phaseView_two"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion2"
+            app:phase_img="@{cultureModel.phasesImgModel.phaseImgOne}"
+            app:phase_value="@{phaseValue.phaseOne}" />
+
+        <com.example.bionintelligence.presentation.custom.PhaseView
+            android:id="@+id/phaseView_two"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/phaseView_one"
+            app:layout_constraintEnd_toStartOf="@id/phaseView_three"
+            app:layout_constraintStart_toEndOf="@id/phaseView_one"
+            app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion2"
+            app:phase_img="@{cultureModel.phasesImgModel.phaseImgTwo}"
+            app:phase_value="@{phaseValue.phaseTwo}" />
+
+        <com.example.bionintelligence.presentation.custom.PhaseView
+            android:id="@+id/phaseView_three"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/phaseView_one"
+            app:layout_constraintEnd_toStartOf="@id/phaseView_four"
+            app:layout_constraintStart_toEndOf="@id/phaseView_two"
+            app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion2"
+            app:phase_img="@{cultureModel.phasesImgModel.phaseImgThree}"
+            app:phase_value="@{phaseValue.phaseThree}" />
+
+        <com.example.bionintelligence.presentation.custom.PhaseView
+            android:id="@+id/phaseView_four"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/phaseView_one"
+            app:layout_constraintEnd_toStartOf="@id/phaseView_five"
+            app:layout_constraintStart_toEndOf="@id/phaseView_three"
+            app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion2"
+            app:phase_img="@{cultureModel.phasesImgModel.phaseImgFour}"
+            app:phase_value="@{phaseValue.phaseFour}" />
+
+        <com.example.bionintelligence.presentation.custom.PhaseView
+            android:id="@+id/phaseView_five"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/phaseView_one"
+            app:layout_constraintEnd_toStartOf="@id/phaseView_six"
+            app:layout_constraintStart_toEndOf="@id/phaseView_four"
+            app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion2"
+            app:phase_img="@{cultureModel.phasesImgModel.phaseImgFive}"
+            app:phase_value="@{phaseValue.phaseFive}" />
+
+        <com.example.bionintelligence.presentation.custom.PhaseView
+            android:id="@+id/phaseView_six"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/phaseView_one"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/phaseView_five"
+            app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion2"
+            app:phase_img="@{cultureModel.phasesImgModel.phaseImgSix}"
+            app:phase_value="@{phaseValue.phaseSix}" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

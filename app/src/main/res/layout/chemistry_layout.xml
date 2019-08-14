@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_values_dark_green">
+
+    <TextView
+        android:id="@+id/tv_itemText"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:text="Натрий"
+        app:layout_constraintBottom_toTopOf="@id/tv_itemName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Na"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/et_itemValue"
+        app:layout_constraintStart_toStartOf="@id/tv_itemText" />
+
+    <EditText
+        android:id="@+id/et_itemValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/bg_tv"
+        android:inputType="number"
+        android:imeOptions="actionDone"
+        android:maxLength="3"
+        android:text="1"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="14dp" />
+
+</android.support.constraint.ConstraintLayout>

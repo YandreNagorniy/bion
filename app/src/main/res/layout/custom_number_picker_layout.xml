@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/decrement"
+            android:layout_width="40dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_values_light_green"
+            android:padding="0dp"
+            android:src="@drawable/ic_remove_black_24dp"
+            android:text="-"
+            android:textColor="@color/colorText"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/display"
+            android:layout_width="72dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_values_light_green"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/number_piker_text"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/increment"
+            android:layout_width="40dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_values_light_green"
+            android:padding="0dp"
+            android:src="@drawable/ic_add_black_24dp"
+            android:text="+"
+            android:textColor="@color/colorText"
+            android:textSize="25sp" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cultureModel"
+            type="com.example.bionintelligence.data.model.CultureModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/container_culture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_values_light_green"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_cultureName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_weight="4"
+            android:text="@{cultureModel.cultureName}"
+            android:textSize="18sp"
+            tools:text="Озимая пшеница" />
+
+        <ImageView
+            android:id="@+id/iv_cultureImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            app:new_src="@{cultureModel.imgLink}"
+            tools:src="@drawable/img_winter_wheat" />
+        <!--app:new_src="@{cultureModel.imgLink}"-->
+
+    </LinearLayout>
+</layout>

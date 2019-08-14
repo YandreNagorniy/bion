@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout">
+
+    <data>
+
+        <variable
+            name="soilFactor"
+            type="com.example.bionintelligence.data.model.SoilFactorsModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/margin_normal"
+        android:paddingEnd="@dimen/margin_normal">
+
+        <TextView
+            android:id="@+id/tv_soilFactors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/text_soil_factors"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/table_soilFactors"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableLayout
+            android:id="@+id/table_soilFactors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_rounder_square"
+            android:padding="8dp"
+            android:focusableInTouchMode="true"
+            app:layout_constraintBottom_toTopOf="@id/g_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_soilFactors">
+
+            <TableRow>
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_N"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_xs"
+                    android:layout_weight="1"
+                    app:item_name="N"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.n}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_P2O5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    app:item_name="P2O5"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.p2O5}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_K2O"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:item_name="K2O"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.k2O}" />
+            </TableRow>
+
+            <TableRow>
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_CaO"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_xs"
+                    android:layout_weight="1"
+                    app:item_name="CaO"
+                    app:item_text="мг-экв 100г."
+                    app:sf_value="@={soilFactor.caO}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_MgO"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    app:item_name="MgO"
+                    app:item_text="мг-экв 100г."
+                    app:sf_value="@={soilFactor.mgO}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_S"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:item_name="S"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.s}" />
+            </TableRow>
+
+            <TableRow>
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_Zn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_xs"
+                    android:layout_weight="1"
+                    app:item_name="Zn"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.zn}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_Cu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    app:item_name="Cu"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.cu}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_Mn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:item_name="Mn"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.mn}" />
+            </TableRow>
+
+            <TableRow>
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_Co"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_xs"
+                    android:layout_weight="1"
+                    app:item_name="Co"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.co}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_Mo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    app:item_name="Mo"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.mo}" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_B"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:item_name="B"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.b}" />
+            </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <com.example.bionintelligence.presentation.custom.SoilFactorView
+                    android:id="@+id/sfv_Fe"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    app:item_name="Fe"
+                    app:item_text="мг/кг"
+                    app:sf_value="@={soilFactor.fe}" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+            </TableRow>
+        </TableLayout>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/g_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/bg_soilfactors"
+            android:padding="3dp"
+            app:layout_constraintBottom_toTopOf="@id/pH_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table_soilFactors">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="@string/text_humus_reserves"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl1_s1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="1.5dp"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl1_s1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="G"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl1_s1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/sf_G"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sf_value="@={soilFactor.g}" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/gl1_s1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/pH_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/bg_soilfactors"
+            android:padding="3dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_water_availability"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/g_layout">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:maxLines="2"
+                android:text="Обменная кислотность почвы"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/gl2_s1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="1.5dp"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl2_s1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="pH"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl2_s1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/sf_pH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:maxLength="3"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sf_value="@={soilFactor.PH}" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/gl2_s1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_water_availability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/text_moisture_supply"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/zpv_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pH_layout" />
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/zpv_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/bg_soilfactors"
+            android:padding="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_water_availability">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:maxLines="2"
+                android:text="Запасы продуктивной влаги в слое почвы 1м, мм"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/gl3_s1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="1.5dp"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl3_s1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/sf_ZPV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textSize="18sp"
+                android:maxLength="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl3_s1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sf_value="@={soilFactor.zpv}" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/gl3_s1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:maxLength="5"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_calculator"
+        android:icon="@drawable/ic_calculator_selector"
+        android:title=""
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings_selector"
+        android:title=""
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_product"
+        android:icon="@drawable/ic_info_selector"
+        android:title=""
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_contacts"
+        android:icon="@drawable/ic_contacts_selector"
+        android:title=""
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+</menu>
