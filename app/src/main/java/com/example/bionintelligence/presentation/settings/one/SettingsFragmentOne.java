@@ -90,7 +90,19 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
                 }
                 //пропускаем через double чтобы отформатировать строку
                 double value = Double.valueOf(view.getEtItemValue().getText().toString());
-                view.getEtItemValue().setText(String.valueOf(value));
+
+                if (view.getId() == binding.sfvN.getId()) {
+                    SoilFactorsModel soilFactorsModel = binding.getSoilFactor();
+                    switch (view.getTvItemName()) {
+                        case "N":
+                            soilFactorsModel.setN(value);
+                    }
+                    binding.setSoilFactor(soilFactorsModel);
+
+                    binding.sfvN.getEtItemValue().setText(text);
+                }
+//                view.getEtItemValue().setText(String.valueOf(value));
+
 
                 //отдаем презентеру модель SoilFactor с новым значением
                 settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor());

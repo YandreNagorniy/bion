@@ -13,6 +13,8 @@
     <declare-styleable name="SoilFactorView">
         <attr name="item_name" />
         <attr name="item_text" />
+        <attr name="sf_min" format="float" />
+        <attr name="sf_max" format="float" />
         <attr name="sf_value" format="float" />
         <attr name="sf_value_int" format="integer" />
     </declare-styleable>

@@ -86,6 +86,10 @@ public class SoilFactorView extends FrameLayout {
         tvItemName.setText(text, TextView.BufferType.SPANNABLE);
     }
 
+    public String getTvItemName() {
+        return tvItemName.getText().toString();
+    }
+
     public EditText getEtItemValue() {
         return etItemValue;
     }
