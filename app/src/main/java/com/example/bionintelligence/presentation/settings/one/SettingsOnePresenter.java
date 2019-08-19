@@ -10,4 +10,8 @@ public interface SettingsOnePresenter {
     void detachView();
 
     void getSoilFactorsData();
+
+    void getSoilFactorsLimits();
+
+    void getAnalyticalFactors();
 }

@@ -7,8 +7,10 @@ import com.example.bionintelligence.data.database.dao.MethodsK2ODao;
 import com.example.bionintelligence.data.database.dao.MethodsNDao;
 import com.example.bionintelligence.data.database.dao.MethodsP2O5Dao;
 import com.example.bionintelligence.data.database.dao.SoilFactorsDao;
+import com.example.bionintelligence.data.database.dao.SoilFactorsLimitsDao;
 import com.example.bionintelligence.data.database.dao.TestCultureDao;
 import com.example.bionintelligence.data.model.CultureModel;
+import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
 import com.example.bionintelligence.data.model.TestCultureModel;
 import com.example.bionintelligence.domain.entities.CalculateCaOEntity;
@@ -34,6 +36,7 @@ public class DatabaseSourceImpl implements DatabaseSource {
     private MethodsNDao methodsNDao;
     private MethodsP2O5Dao methodsP2O5Dao;
     private MethodsK2ODao methodsK2ODao;
+    private SoilFactorsLimitsDao soilFactorsLimitsDao;
 
     public DatabaseSourceImpl() {
         calculatorDao = App.getInstance().getDatabase().calculatorDao();
@@ -43,6 +46,7 @@ public class DatabaseSourceImpl implements DatabaseSource {
         methodsNDao = App.getInstance().getDatabase().methodsNDao();
         methodsP2O5Dao = App.getInstance().getDatabase().methodsP2O5Dao();
         methodsK2ODao = App.getInstance().getDatabase().methodsK2ODao();
+        soilFactorsLimitsDao = App.getInstance().getDatabase().soilFactorsLimitDao();
     }
 
     @Override
@@ -144,21 +148,6 @@ public class DatabaseSourceImpl implements DatabaseSource {
     public Flowable<List<CultureModel>> getCultureList() {
         return cultureDao.getList();
     }
-//
-//    @Override
-//    public Single<PhasesImgModel> getPhaseImg(int cultureId) {
-//        return phasesImgDao.getPhaseImgByCultureId(cultureId);
-//    }
-//
-//    @Override
-//    public Single<PhasesModel> getPhases(int cultureId, int productive) {
-//        return phasesDao.getPhases(cultureId, productive);
-//    }
-//
-//    @Override
-//    public Single<ProductiveInfoModel> getPhasesInfo(int cultureId) {
-//        return productiveInfoDao.getPhasesInfo(cultureId);
-//    }
 
     @Override
     public Single<TestCultureModel> getTestCultureModel(int cultureId) {
@@ -175,5 +164,10 @@ public class DatabaseSourceImpl implements DatabaseSource {
         Completable.fromAction(() -> soilFactorsDao.insert(soilFactorsModel))
                 .subscribeOn(Schedulers.io())
                 .subscribe();
+    }
+
+    @Override
+    public Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel() {
+        return soilFactorsLimitsDao.getSoilFactorsLimit();
     }
 }

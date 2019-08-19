@@ -4,6 +4,7 @@ import com.example.bionintelligence.data.model.CultureModel;
 import com.example.bionintelligence.data.model.PhasesImgModel;
 import com.example.bionintelligence.data.model.ProductiveInfoModel;
 import com.example.bionintelligence.data.model.PhasesModel;
+import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
 import com.example.bionintelligence.data.model.TestCultureModel;
 import com.example.bionintelligence.domain.entities.CalculateCaOEntity;
@@ -61,14 +62,12 @@ public interface DatabaseSource {
     Single<Double> getKirsanovIndexK2O(double valueP2O5);
 
     Flowable<List<CultureModel>> getCultureList();
-//
-//    Single<PhasesImgModel> getPhaseImg(int cultureId);
-//
-//    Single<PhasesModel> getPhases(int cultureId, int productive);
 
     Single<TestCultureModel> getTestCultureModel(int cultureId);
 
     Single<SoilFactorsModel> getSoilFactorsModel();
 
     void setSoilFactorsModel(SoilFactorsModel soilFactorsModel);
+
+    Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel();
 }

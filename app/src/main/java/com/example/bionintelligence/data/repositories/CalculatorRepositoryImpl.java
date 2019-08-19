@@ -2,9 +2,7 @@ package com.example.bionintelligence.data.repositories;
 
 import android.util.Pair;
 
-import com.example.bionintelligence.data.model.PhasesImgModel;
-import com.example.bionintelligence.data.model.ProductiveInfoModel;
-import com.example.bionintelligence.data.model.PhasesModel;
+import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
 import com.example.bionintelligence.data.model.TestCultureModel;
 import com.example.bionintelligence.data.pojo.AnalyticalFactors;
@@ -21,9 +19,8 @@ import com.example.bionintelligence.domain.entities.CalculateSEntity;
 import com.example.bionintelligence.domain.entities.CalculatorParams;
 import com.example.bionintelligence.domain.repositories.CalculatorRepository;
 
-import io.reactivex.Completable;
+import io.reactivex.Flowable;
 import io.reactivex.Single;
-import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
 public class CalculatorRepositoryImpl implements CalculatorRepository {
@@ -59,7 +56,6 @@ public class CalculatorRepositoryImpl implements CalculatorRepository {
         localSource.setAnalyticalFactorsP2O5(analyticalFactors.getAfP2O5());
         localSource.setAnalyticalFactorsK2O(analyticalFactors.getAfK2O());
     }
-
 
     //Данные калькулятора
     @Override
@@ -159,5 +155,10 @@ public class CalculatorRepositoryImpl implements CalculatorRepository {
     @Override
     public void setSoilFactorsModel(SoilFactorsModel soilFactorsModel) {
         databaseSource.setSoilFactorsModel(soilFactorsModel);
+    }
+
+    @Override
+    public Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel() {
+        return databaseSource.getSoilFactorsLimitsModel();
     }
 }

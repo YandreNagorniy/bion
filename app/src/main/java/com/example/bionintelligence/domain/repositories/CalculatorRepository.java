@@ -2,9 +2,7 @@ package com.example.bionintelligence.domain.repositories;
 
 import android.util.Pair;
 
-import com.example.bionintelligence.data.model.PhasesImgModel;
-import com.example.bionintelligence.data.model.ProductiveInfoModel;
-import com.example.bionintelligence.data.model.PhasesModel;
+import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
 import com.example.bionintelligence.data.model.TestCultureModel;
 import com.example.bionintelligence.data.pojo.AnalyticalFactors;
@@ -17,7 +15,7 @@ import com.example.bionintelligence.domain.entities.CalculateP2O5Entity;
 import com.example.bionintelligence.domain.entities.CalculateSEntity;
 import com.example.bionintelligence.domain.entities.CalculatorParams;
 
-import io.reactivex.Completable;
+import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public interface CalculatorRepository {
@@ -61,4 +59,6 @@ public interface CalculatorRepository {
     Single<SoilFactorsModel> getSoilFactorsModel();
 
     void setSoilFactorsModel(SoilFactorsModel soilFactorsModel);
+
+    Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel();
 }

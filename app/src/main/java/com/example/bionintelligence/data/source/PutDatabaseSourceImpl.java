@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 import com.example.bionintelligence.App;
 import com.example.bionintelligence.R;
-import com.example.bionintelligence.data.database.AppDatabase;
 import com.example.bionintelligence.data.database.dao.CalculatorDao;
 import com.example.bionintelligence.data.database.dao.CultureDao;
 import com.example.bionintelligence.data.database.dao.KUsvDao;
@@ -15,7 +14,7 @@ import com.example.bionintelligence.data.database.dao.MethodsP2O5Dao;
 import com.example.bionintelligence.data.database.dao.PHDao;
 import com.example.bionintelligence.data.database.dao.PrecipitationRequirementsDao;
 import com.example.bionintelligence.data.database.dao.SoilFactorsDao;
-import com.example.bionintelligence.data.database.dao.SoilFactorsLimitDao;
+import com.example.bionintelligence.data.database.dao.SoilFactorsLimitsDao;
 import com.example.bionintelligence.data.database.dao.TestCultureDao;
 import com.example.bionintelligence.data.database.dao.VinosDao;
 import com.example.bionintelligence.data.database.dao.WaterConsumptionDao;
@@ -27,7 +26,7 @@ import com.example.bionintelligence.data.model.MethodsNModel;
 import com.example.bionintelligence.data.model.MethodsP2O5Model;
 import com.example.bionintelligence.data.model.PHModel;
 import com.example.bionintelligence.data.model.PrecipitationRequirementsModel;
-import com.example.bionintelligence.data.model.SoilFactorsLimit;
+import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
 import com.example.bionintelligence.data.model.TestCultureModel;
 import com.example.bionintelligence.data.model.TestPhasesImgModel;
@@ -83,7 +82,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     //добавить
     private Completable setSoilFactorsLimit() {
 
-        SoilFactorsLimitDao soilFactorsLimitDao = App.getInstance().getDatabase().soilFactorsLimitDao();
+        SoilFactorsLimitsDao soilFactorsLimitsDao = App.getInstance().getDatabase().soilFactorsLimitDao();
 
         List<MinMaxPojo> listNkimits = new ArrayList<>();
         listNkimits.add(new MinMaxPojo(0.1, 100));
@@ -100,7 +99,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
         listNkimits.add(new MinMaxPojo(0.1, 3000));
         listNkimits.add(new MinMaxPojo(0.1, 450));
 
-        SoilFactorsLimit soilFactorsLimits = new SoilFactorsLimit(
+        SoilFactorsLimitsModel soilFactorsLimitsModel = new SoilFactorsLimitsModel(
                 new MinMaxListPojo(listNkimits), new MinMaxListPojo(listP2Okimits), new MinMaxListPojo(listK2Okimits),
                 new MinMaxPojo(0.1, 50),
                 new MinMaxPojo(0.1, 10), new MinMaxPojo(0.1, 100), new MinMaxPojo(0.01, 30),
@@ -108,7 +107,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
                 new MinMaxPojo(0.01, 30), new MinMaxPojo(0.01, 10), new MinMaxPojo(0.01, 5),
                 new MinMaxPojo(0.01, 5), new MinMaxPojo(0.01, 5), new MinMaxPojo(0.01, 10));
 
-        return Completable.fromAction(() -> soilFactorsLimitDao.insert(soilFactorsLimits));
+        return Completable.fromAction(() -> soilFactorsLimitsDao.insert(soilFactorsLimitsModel));
     }
 
     private Completable setSoilFactorsData() {

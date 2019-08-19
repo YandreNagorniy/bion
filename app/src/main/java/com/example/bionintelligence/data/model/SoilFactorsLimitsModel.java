@@ -10,7 +10,7 @@ import com.example.bionintelligence.data.pojo.MinMaxListPojo;
 import com.example.bionintelligence.data.pojo.MinMaxPojo;
 
 @Entity
-public class SoilFactorsLimit {
+public class SoilFactorsLimitsModel {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @TypeConverters(MinMaxListLimitConverters.class)
@@ -46,11 +46,11 @@ public class SoilFactorsLimit {
     @Embedded(prefix = "zpv")
     private MinMaxPojo limitzpv;
 
-    public SoilFactorsLimit(MinMaxListPojo limitN, MinMaxListPojo limitP2O5, MinMaxListPojo limitK2O,
-                            MinMaxPojo limitCaO, MinMaxPojo limitMgO, MinMaxPojo limitS,
-                            MinMaxPojo limitZn, MinMaxPojo limitCu, MinMaxPojo limitMn,
-                            MinMaxPojo limitCo, MinMaxPojo limitMo, MinMaxPojo limitB, MinMaxPojo limitFe,
-                            MinMaxPojo limitG, MinMaxPojo limitPH, MinMaxPojo limitzpv) {
+    public SoilFactorsLimitsModel(MinMaxListPojo limitN, MinMaxListPojo limitP2O5, MinMaxListPojo limitK2O,
+                                  MinMaxPojo limitCaO, MinMaxPojo limitMgO, MinMaxPojo limitS,
+                                  MinMaxPojo limitZn, MinMaxPojo limitCu, MinMaxPojo limitMn,
+                                  MinMaxPojo limitCo, MinMaxPojo limitMo, MinMaxPojo limitB, MinMaxPojo limitFe,
+                                  MinMaxPojo limitG, MinMaxPojo limitPH, MinMaxPojo limitzpv) {
         this.limitN = limitN;
         this.limitP2O5 = limitP2O5;
         this.limitK2O = limitK2O;

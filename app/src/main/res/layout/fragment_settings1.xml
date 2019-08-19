@@ -11,7 +11,7 @@
 
         <variable
             name="limits"
-            type="com.example.bionintelligence.data.model.SoilFactorsLimit" />
+            type="com.example.bionintelligence.data.model.SoilFactorsLimitsModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

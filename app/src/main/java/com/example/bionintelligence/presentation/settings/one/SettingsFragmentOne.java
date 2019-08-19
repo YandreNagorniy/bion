@@ -15,7 +15,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.example.bionintelligence.R;
+import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
+import com.example.bionintelligence.data.pojo.AnalyticalFactors;
 import com.example.bionintelligence.data.repositories.CalculatorRepositoryImpl;
 import com.example.bionintelligence.data.source.DatabaseSourceImpl;
 import com.example.bionintelligence.data.source.LocalSourceImpl;
@@ -29,6 +31,7 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     private FragmentSettings1Binding binding;
     private SettingsOnePresenter settingsOnePresenter;
     private InputMethodManager inputMethodManager;
+    private SoilFactorsLimitsModel soilFactorsLimitsModel;
 
     @Nullable
     @Override
@@ -38,6 +41,8 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
                 new LocalSourceImpl(new WeakReference<>(getActivity())), new DatabaseSourceImpl()));
         settingsOnePresenter.attachView(this);
         settingsOnePresenter.getSoilFactorsData();
+        settingsOnePresenter.getSoilFactorsLimits();
+        settingsOnePresenter.getAnalyticalFactors();
         inputMethodManager = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
 
         return binding.getRoot();
@@ -67,6 +72,17 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     @Override
     public void displaySoilFactors(SoilFactorsModel soilFactors) {
         binding.setSoilFactor(soilFactors);
+    }
+
+    @Override
+    public void receiveSoilFactorsLimits(SoilFactorsLimitsModel soilFactorsLimitsModel) {
+        this.soilFactorsLimitsModel = soilFactorsLimitsModel;
+        soilFactorsLimitsModel.getLimitN();
+    }
+
+    @Override
+    public void receiveAnalyticalFactors(AnalyticalFactors analyticalFactors) {
+        //
     }
 
     private void soilFactorsClickListener(SoilFactorView view) {
