@@ -1,9 +1,6 @@
 package com.example.bionintelligence.data.source;
 
 import com.example.bionintelligence.data.model.CultureModel;
-import com.example.bionintelligence.data.model.PhasesImgModel;
-import com.example.bionintelligence.data.model.ProductiveInfoModel;
-import com.example.bionintelligence.data.model.PhasesModel;
 import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
 import com.example.bionintelligence.data.model.TestCultureModel;
@@ -17,7 +14,6 @@ import com.example.bionintelligence.domain.entities.CalculateSEntity;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
@@ -69,5 +65,5 @@ public interface DatabaseSource {
 
     void setSoilFactorsModel(SoilFactorsModel soilFactorsModel);
 
-    Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel();
+    Single<SoilFactorsLimitsModel> getSoilFactorsLimitsModel();
 }

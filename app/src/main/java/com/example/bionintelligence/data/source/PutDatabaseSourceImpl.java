@@ -76,7 +76,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
                 setVinosData(),
                 setWaterConsumptionData(),
                 setKUsvData(),
-                setTestCultureModel());
+                setTestCultureModel(),
+                setSoilFactorsLimit());
     }
 
     //добавить
@@ -90,14 +91,14 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
         listNkimits.add(new MinMaxPojo(0.1, 250));
 
         List<MinMaxPojo> listP2Okimits = new ArrayList<>();
-        listNkimits.add(new MinMaxPojo(0.1, 100));
-        listNkimits.add(new MinMaxPojo(0.1, 350));
-        listNkimits.add(new MinMaxPojo(0.1, 450));
+        listP2Okimits.add(new MinMaxPojo(0.1, 100));
+        listP2Okimits.add(new MinMaxPojo(0.1, 350));
+        listP2Okimits.add(new MinMaxPojo(0.1, 450));
 
         List<MinMaxPojo> listK2Okimits = new ArrayList<>();
-        listNkimits.add(new MinMaxPojo(0.1, 1000));
-        listNkimits.add(new MinMaxPojo(0.1, 3000));
-        listNkimits.add(new MinMaxPojo(0.1, 450));
+        listK2Okimits.add(new MinMaxPojo(0.1, 1000));
+        listK2Okimits.add(new MinMaxPojo(0.1, 300));
+        listK2Okimits.add(new MinMaxPojo(0.1, 450));
 
         SoilFactorsLimitsModel soilFactorsLimitsModel = new SoilFactorsLimitsModel(
                 new MinMaxListPojo(listNkimits), new MinMaxListPojo(listP2Okimits), new MinMaxListPojo(listK2Okimits),

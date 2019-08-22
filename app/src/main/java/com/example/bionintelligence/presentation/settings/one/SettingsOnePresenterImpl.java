@@ -9,7 +9,6 @@ import com.example.bionintelligence.domain.repositories.CalculatorRepository;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -40,6 +39,7 @@ public class SettingsOnePresenterImpl implements SettingsOnePresenter {
     @Override
     public void getSoilFactorsLimits() {
         compositeDisposable.add(calculatorRepository.getSoilFactorsLimitsModel()
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(soilFactorsLimitsModel -> settingsOneView.receiveSoilFactorsLimits(soilFactorsLimitsModel),
                         Throwable::printStackTrace));
@@ -50,6 +50,7 @@ public class SettingsOnePresenterImpl implements SettingsOnePresenter {
         compositeDisposable.add(calculatorRepository.getAnalyticalFactors()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess(analyticalFactors -> getSoilFactorsLimits())
                 .subscribe(analyticalFactors -> settingsOneView.receiveAnalyticalFactors(analyticalFactors),
                         Throwable::printStackTrace));
     }

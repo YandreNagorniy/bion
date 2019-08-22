@@ -32,6 +32,7 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     private SettingsOnePresenter settingsOnePresenter;
     private InputMethodManager inputMethodManager;
     private SoilFactorsLimitsModel soilFactorsLimitsModel;
+    private AnalyticalFactors analyticalFactors;
 
     @Nullable
     @Override
@@ -41,7 +42,7 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
                 new LocalSourceImpl(new WeakReference<>(getActivity())), new DatabaseSourceImpl()));
         settingsOnePresenter.attachView(this);
         settingsOnePresenter.getSoilFactorsData();
-        settingsOnePresenter.getSoilFactorsLimits();
+//        settingsOnePresenter.getSoilFactorsLimits();
         settingsOnePresenter.getAnalyticalFactors();
         inputMethodManager = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -77,12 +78,21 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     @Override
     public void receiveSoilFactorsLimits(SoilFactorsLimitsModel soilFactorsLimitsModel) {
         this.soilFactorsLimitsModel = soilFactorsLimitsModel;
-        soilFactorsLimitsModel.getLimitN();
+
+        double minN = soilFactorsLimitsModel.getLimitN().getValue().get(analyticalFactors.getAfN()-1).getMin();
+        double maxN = soilFactorsLimitsModel.getLimitN().getValue().get(analyticalFactors.getAfN()-1).getMax();
+        double minP2O5 = soilFactorsLimitsModel.getLimitP2O5().getValue().get(analyticalFactors.getAfP2O5()-1).getMin();
+        double maxP2O5 = soilFactorsLimitsModel.getLimitP2O5().getValue().get(analyticalFactors.getAfP2O5()-1).getMax();
+        double minK2O = soilFactorsLimitsModel.getLimitK2O().getValue().get(analyticalFactors.getAfK2O()-1).getMin();
+        double maxK2O = soilFactorsLimitsModel.getLimitK2O().getValue().get(analyticalFactors.getAfK2O()-1).getMax();
+
+
+        binding.setLimits(soilFactorsLimitsModel);
     }
 
     @Override
     public void receiveAnalyticalFactors(AnalyticalFactors analyticalFactors) {
-        //
+        this.analyticalFactors = analyticalFactors;
     }
 
     private void soilFactorsClickListener(SoilFactorView view) {

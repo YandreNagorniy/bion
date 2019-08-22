@@ -167,7 +167,7 @@ public class DatabaseSourceImpl implements DatabaseSource {
     }
 
     @Override
-    public Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel() {
+    public Single<SoilFactorsLimitsModel> getSoilFactorsLimitsModel() {
         return soilFactorsLimitsDao.getSoilFactorsLimit();
     }
 }

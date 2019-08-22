@@ -19,7 +19,6 @@ import com.example.bionintelligence.domain.entities.CalculateSEntity;
 import com.example.bionintelligence.domain.entities.CalculatorParams;
 import com.example.bionintelligence.domain.repositories.CalculatorRepository;
 
-import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
@@ -158,7 +157,7 @@ public class CalculatorRepositoryImpl implements CalculatorRepository {
     }
 
     @Override
-    public Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel() {
+    public Single<SoilFactorsLimitsModel> getSoilFactorsLimitsModel() {
         return databaseSource.getSoilFactorsLimitsModel();
     }
 }

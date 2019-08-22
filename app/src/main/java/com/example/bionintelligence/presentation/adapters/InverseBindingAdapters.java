@@ -43,6 +43,10 @@ public class InverseBindingAdapters {
     public static void setItemValue(SoilFactorView view, double value) {
         view.setItemValue(String.valueOf(value));
     }
+    @BindingAdapter({"sf_value", "sf_min", "sf_max"})
+    public static void setItemValue(SoilFactorView view, double value, double min, double max) {
+        view.setItemValue(String.valueOf(value));
+    }
 
     @InverseBindingAdapter(attribute = "sf_value")
     public static double getItemValue(EditText view) {
@@ -52,9 +56,12 @@ public class InverseBindingAdapters {
             return 0.0;
         }
     }
-
     @BindingAdapter({"sf_value"})
     public static void setItemValue(EditText view, double value) {
+        view.setText(String.valueOf(value));
+    }
+    @BindingAdapter({"sf_value", "sf_min", "sf_max"})
+    public static void setItemValue(EditText view, double value, double min, double max) {
         view.setText(String.valueOf(value));
     }
 

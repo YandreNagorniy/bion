@@ -15,7 +15,6 @@ import com.example.bionintelligence.domain.entities.CalculateP2O5Entity;
 import com.example.bionintelligence.domain.entities.CalculateSEntity;
 import com.example.bionintelligence.domain.entities.CalculatorParams;
 
-import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public interface CalculatorRepository {
@@ -60,5 +59,5 @@ public interface CalculatorRepository {
 
     void setSoilFactorsModel(SoilFactorsModel soilFactorsModel);
 
-    Flowable<SoilFactorsLimitsModel> getSoilFactorsLimitsModel();
+    Single<SoilFactorsLimitsModel> getSoilFactorsLimitsModel();
 }

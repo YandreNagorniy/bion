@@ -58,9 +58,11 @@
                     android:layout_weight="1"
                     app:item_name="N"
                     app:item_text="мг/кг"
-                    app:sf_min="@{limits.limitN}"
-                    app:sf_max="@{limits.limitN.getMax()}"
+                    app:sf_min="@{limits.limitN.value.get(0).getMin()}"
+                    app:sf_max="@{limits.limitN.value.get(0).getMax()}"
                     app:sf_value="@={soilFactor.n}" />
+                <!--app:sf_min="@{limits.limitN}"-->
+                <!--app:sf_max="@{limits.limitN.getMax()}"-->
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
                     android:id="@+id/sfv_P2O5"

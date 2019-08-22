@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f0b4b281882d349383b7650be3215e36",
+    "identityHash": "efd2a690fb750694115ad8660cdf4234",
     "entities": [
       {
         "tableName": "CalculatorModel",
@@ -1154,7 +1154,7 @@
         "foreignKeys": []
       },
       {
-        "tableName": "SoilFactorsLimit",
+        "tableName": "SoilFactorsLimitsModel",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `limitN` TEXT, `limitP2O5` TEXT, `limitK2O` TEXT, `caomin` REAL, `caomax` REAL, `mgomin` REAL, `mgomax` REAL, `smin` REAL, `smax` REAL, `znmin` REAL, `znmax` REAL, `cumin` REAL, `cumax` REAL, `mnmin` REAL, `mnmax` REAL, `comin` REAL, `comax` REAL, `momin` REAL, `momax` REAL, `bmin` REAL, `bmax` REAL, `femin` REAL, `femax` REAL, `gmin` REAL, `gmax` REAL, `phmin` REAL, `phmax` REAL, `zpvmin` REAL, `zpvmax` REAL)",
         "fields": [
           {
@@ -1350,7 +1350,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f0b4b281882d349383b7650be3215e36\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"efd2a690fb750694115ad8660cdf4234\")"
     ]
   }
 }

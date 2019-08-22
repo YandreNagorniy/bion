@@ -1,8 +1,8 @@
 package com.example.bionintelligence.data.pojo;
 
 public class MinMaxPojo {
-    private double min;
-    private double max;
+    public double min;
+    public double max;
 
     public MinMaxPojo(double min, double max) {
         this.min = min;

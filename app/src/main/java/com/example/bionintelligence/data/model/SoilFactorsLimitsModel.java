@@ -59,12 +59,16 @@ public class SoilFactorsLimitsModel {
         this.limitS = limitS;
         this.limitZn = limitZn;
         this.limitCu = limitCu;
+        this.limitMn = limitMn;
         this.limitCo = limitCo;
         this.limitMo = limitMo;
         this.limitB = limitB;
         this.limitFe = limitFe;
         this.limitG = limitG;
+        this.limitPH = limitPH;
+        this.limitzpv = limitzpv;
     }
+
 
     public int getId() {
         return id;
