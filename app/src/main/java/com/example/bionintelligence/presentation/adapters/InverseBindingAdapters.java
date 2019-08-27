@@ -34,52 +34,6 @@ public class InverseBindingAdapters {
         }
     }
 
-    @InverseBindingAdapter(attribute = "sf_value")
-    public static double getItemValue(SoilFactorView view) {
-        return view.getItemValue();
-    }
-
-    @BindingAdapter({"sf_value"})
-    public static void setItemValue(SoilFactorView view, double value) {
-        view.setItemValue(String.valueOf(value));
-    }
-    @BindingAdapter({"sf_value", "sf_min", "sf_max"})
-    public static void setItemValue(SoilFactorView view, double value, double min, double max) {
-        view.setItemValue(String.valueOf(value));
-    }
-
-    @InverseBindingAdapter(attribute = "sf_value")
-    public static double getItemValue(EditText view) {
-        try {
-            return Double.valueOf(view.getText().toString());
-        } catch (NumberFormatException n) {
-            return 0.0;
-        }
-    }
-    @BindingAdapter({"sf_value"})
-    public static void setItemValue(EditText view, double value) {
-        view.setText(String.valueOf(value));
-    }
-    @BindingAdapter({"sf_value", "sf_min", "sf_max"})
-    public static void setItemValue(EditText view, double value, double min, double max) {
-        view.setText(String.valueOf(value));
-    }
-
-    @InverseBindingAdapter(attribute = "sf_value")
-    public static int getItemValueInteger(EditText view) {
-        try {
-            double value = Double.parseDouble(view.getText().toString());
-            return (int) value;
-        } catch (NumberFormatException n) {
-            return 0;
-        }
-    }
-
-    @BindingAdapter({"sf_value"})
-    public static void setItemValueInteger(EditText view, int value) {
-        view.setText(String.valueOf(value));
-    }
-
     @BindingAdapter(value = "sf_valueAttrChanged")
     public static void setListener(EditText view, final InverseBindingListener listener) {
         if (listener != null) {
@@ -100,5 +54,47 @@ public class InverseBindingAdapters {
                 }
             });
         }
+    }
+
+    @InverseBindingAdapter(attribute = "sf_value")
+    public static double getItemValue(SoilFactorView view) {
+        return view.getItemValue();
+    }
+
+    @InverseBindingAdapter(attribute = "sf_value")
+    public static double getItemValue(EditText view) {
+        try {
+            return Double.valueOf(view.getText().toString());
+        } catch (NumberFormatException n) {
+            return 0.0;
+        }
+    }
+
+    @InverseBindingAdapter(attribute = "sf_value")
+    public static int getItemValueInteger(EditText view) {
+        try {
+            double value = Double.parseDouble(view.getText().toString());
+            return (int) value;
+        } catch (NumberFormatException n) {
+            return 0;
+        }
+    }
+
+    @BindingAdapter({"sf_value", "sf_min", "sf_max"})
+    public static void setItemValue(SoilFactorView view, double value, double min, double max) {
+        if (min != 0) {
+            if (value < min) value = min;
+            else if (value > max) value = max;
+        }
+        view.setItemValue(String.valueOf(value));
+    }
+
+    @BindingAdapter({"sf_value", "sf_min", "sf_max"})
+    public static void setItemValue(EditText view, double value, double min, double max) {
+        if (min != 0) {
+            if (value < min) value = min;
+            else if (value > max) value = max;
+        }
+        view.setText(String.valueOf(value));
     }
 }

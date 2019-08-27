@@ -78,15 +78,6 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     @Override
     public void receiveSoilFactorsLimits(SoilFactorsLimitsModel soilFactorsLimitsModel) {
         this.soilFactorsLimitsModel = soilFactorsLimitsModel;
-
-        double minN = soilFactorsLimitsModel.getLimitN().getValue().get(analyticalFactors.getAfN()-1).getMin();
-        double maxN = soilFactorsLimitsModel.getLimitN().getValue().get(analyticalFactors.getAfN()-1).getMax();
-        double minP2O5 = soilFactorsLimitsModel.getLimitP2O5().getValue().get(analyticalFactors.getAfP2O5()-1).getMin();
-        double maxP2O5 = soilFactorsLimitsModel.getLimitP2O5().getValue().get(analyticalFactors.getAfP2O5()-1).getMax();
-        double minK2O = soilFactorsLimitsModel.getLimitK2O().getValue().get(analyticalFactors.getAfK2O()-1).getMin();
-        double maxK2O = soilFactorsLimitsModel.getLimitK2O().getValue().get(analyticalFactors.getAfK2O()-1).getMax();
-
-
         binding.setLimits(soilFactorsLimitsModel);
     }
 
@@ -96,42 +87,19 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     }
 
     private void soilFactorsClickListener(SoilFactorView view) {
-        //слушатель нажатия на плитку (хим.элемент)
-        view.setOnClickListener(v -> {
+        view.setOnClickListener(v -> {                                                                          //слушатель нажатия на плитку (хим.элемент)
             view.getEtItemValue().requestFocus();
-            //курсор справа
-            view.getEtItemValue().setSelection(view.getEtItemValue().getText().length());
+            view.getEtItemValue().setSelection(view.getEtItemValue().getText().length());                       //курсор справа
             inputMethodManager.showSoftInput(view.getEtItemValue(), InputMethodManager.SHOW_IMPLICIT);
         });
 
-        //обработчик нажатия кнопки клавиатуры "Done" для SoilFactorView
-        view.setOnEditorActionListener((v, actionId, event) -> {
-            //если на клавиатуре выбрали DONE
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
+        view.setOnEditorActionListener((v, actionId, event) -> {                                                //обработчик нажатия кнопки клавиатуры "Done" для SoilFactorView
+            if (actionId == EditorInfo.IME_ACTION_DONE) {                                                       //если на клавиатуре выбрали DONE
                 String text = view.getEtItemValue().getText().toString();
 
-                //форматируем строку
-                if (TextUtils.isEmpty(text) || text.equals(".")) {
-                    view.getEtItemValue().setText("0");
-                }
-                //пропускаем через double чтобы отформатировать строку
-                double value = Double.valueOf(view.getEtItemValue().getText().toString());
-
-                if (view.getId() == binding.sfvN.getId()) {
-                    SoilFactorsModel soilFactorsModel = binding.getSoilFactor();
-                    switch (view.getTvItemName()) {
-                        case "N":
-                            soilFactorsModel.setN(value);
-                    }
-                    binding.setSoilFactor(soilFactorsModel);
-
-                    binding.sfvN.getEtItemValue().setText(text);
-                }
-//                view.getEtItemValue().setText(String.valueOf(value));
-
-
-                //отдаем презентеру модель SoilFactor с новым значением
-                settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor());
+                view.getEtItemValue().setText(text);                                                            // добавляем новое значение во view
+                binding.setSoilFactor(binding.getSoilFactor());                                                 // обновляем данные из вью
+                settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor());                               //отдаем презентеру модель SoilFactor с новым значением
             }
             return false;
         });
@@ -143,27 +111,29 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 //получаем значение view и при небходимости форматируем текст
                 String text = view.getText().toString();
-                if (TextUtils.isEmpty(text) || text.equals(".")) {
-                    view.setText("0");
-                }
 
-                //пропускаем через double чтобы отформатировать строку
-                double value = Double.valueOf(view.getText().toString());
-                if (view.getId() == R.id.sf_ZPV) {
-                    view.setText(String.valueOf((int) value));
-                } else {
-                    view.setText(String.valueOf(value));
-                }
+                view.setText(text);
+//                if (TextUtils.isEmpty(text) || text.equals(".")) {
+//                    view.setText("0");
+//                }
 
-                //ставим ограничения на значения
-                if (view.getId() == R.id.sf_pH) {
-                    if (value < 4) {
-                        view.setText("4");
-                    }
-                    if (value > 10) {
-                        view.setText("10");
-                    }
-                }
+//                //пропускаем через double чтобы отформатировать строку
+//                double value = Double.valueOf(view.getText().toString());
+//                if (view.getId() == R.id.sf_ZPV) {
+//                    view.setText(String.valueOf((int) value));
+//                } else {
+//                    view.setText(String.valueOf(value));
+//                }
+//
+//                //ставим ограничения на значения
+//                if (view.getId() == R.id.sf_pH) {
+//                    if (value < 4) {
+//                        view.setText("4");
+//                    }
+//                    if (value > 10) {
+//                        view.setText("10");
+//                    }
+//                }
                 settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor());
             }
             return false;

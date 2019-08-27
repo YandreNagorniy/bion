@@ -61,8 +61,7 @@
                     app:sf_min="@{limits.limitN.value.get(0).getMin()}"
                     app:sf_max="@{limits.limitN.value.get(0).getMax()}"
                     app:sf_value="@={soilFactor.n}" />
-                <!--app:sf_min="@{limits.limitN}"-->
-                <!--app:sf_max="@{limits.limitN.getMax()}"-->
+
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
                     android:id="@+id/sfv_P2O5"
@@ -73,6 +72,8 @@
                     android:layout_weight="1"
                     app:item_name="P2O5"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitP2O5.value.get(0).getMax()}"
+                    app:sf_min="@{limits.limitP2O5.value.get(0).getMin()}"
                     app:sf_value="@={soilFactor.p2O5}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
@@ -82,6 +83,8 @@
                     android:layout_weight="1"
                     app:item_name="K2O"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitK2O.value.get(0).getMax()}"
+                    app:sf_min="@{limits.limitK2O.value.get(0).getMin()}"
                     app:sf_value="@={soilFactor.k2O}" />
             </TableRow>
 
@@ -95,6 +98,8 @@
                     android:layout_weight="1"
                     app:item_name="CaO"
                     app:item_text="мг-экв 100г."
+                    app:sf_max="@{limits.limitCaO.max}"
+                    app:sf_min="@{limits.limitCaO.min}"
                     app:sf_value="@={soilFactor.caO}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
@@ -105,6 +110,8 @@
                     android:layout_marginEnd="3dp"
                     android:layout_weight="1"
                     app:item_name="MgO"
+                    app:sf_max="@{limits.limitMgO.max}"
+                    app:sf_min="@{limits.limitMgO.min}"
                     app:item_text="мг-экв 100г."
                     app:sf_value="@={soilFactor.mgO}" />
 
@@ -115,6 +122,8 @@
                     android:layout_weight="1"
                     app:item_name="S"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitS.max}"
+                    app:sf_min="@{limits.limitS.min}"
                     app:sf_value="@={soilFactor.s}" />
             </TableRow>
 
@@ -128,6 +137,8 @@
                     android:layout_weight="1"
                     app:item_name="Zn"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitZn.max}"
+                    app:sf_min="@{limits.limitZn.min}"
                     app:sf_value="@={soilFactor.zn}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
@@ -139,6 +150,8 @@
                     android:layout_weight="1"
                     app:item_name="Cu"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitCu.max}"
+                    app:sf_min="@{limits.limitCu.min}"
                     app:sf_value="@={soilFactor.cu}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
@@ -148,6 +161,8 @@
                     android:layout_weight="1"
                     app:item_name="Mn"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitMn.max}"
+                    app:sf_min="@{limits.limitMn.min}"
                     app:sf_value="@={soilFactor.mn}" />
             </TableRow>
 
@@ -161,6 +176,8 @@
                     android:layout_weight="1"
                     app:item_name="Co"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitCo.max}"
+                    app:sf_min="@{limits.limitCo.min}"
                     app:sf_value="@={soilFactor.co}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
@@ -172,6 +189,8 @@
                     android:layout_weight="1"
                     app:item_name="Mo"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitMo.max}"
+                    app:sf_min="@{limits.limitMo.min}"
                     app:sf_value="@={soilFactor.mo}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
@@ -181,6 +200,8 @@
                     android:layout_weight="1"
                     app:item_name="B"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitB.max}"
+                    app:sf_min="@{limits.limitB.min}"
                     app:sf_value="@={soilFactor.b}" />
             </TableRow>
 
@@ -200,6 +221,8 @@
                     android:layout_weight="1"
                     app:item_name="Fe"
                     app:item_text="мг/кг"
+                    app:sf_max="@{limits.limitFe.max}"
+                    app:sf_min="@{limits.limitFe.min}"
                     app:sf_value="@={soilFactor.fe}" />
 
                 <View
@@ -266,6 +289,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:sf_max="@{limits.limitG.max}"
+                app:sf_min="@{limits.limitG.min}"
                 app:sf_value="@={soilFactor.g}" />
 
             <android.support.constraint.Guideline
@@ -334,6 +359,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:sf_max="@{limits.limitPH.max}"
+                app:sf_min="@{limits.limitPH.min}"
                 app:sf_value="@={soilFactor.PH}" />
 
             <android.support.constraint.Guideline
@@ -406,6 +433,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/gl3_s1"
                 app:layout_constraintTop_toTopOf="parent"
+                app:sf_max="@{limits.limitzpv.max}"
+                app:sf_min="@{limits.limitzpv.min}"
                 app:sf_value="@={soilFactor.zpv}" />
 
             <android.support.constraint.Guideline
