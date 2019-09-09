@@ -12,6 +12,9 @@
         <variable
             name="limits"
             type="com.example.bionintelligence.data.model.SoilFactorsLimitsModel" />
+        <variable
+            name="view"
+            type="com.example.bionintelligence.presentation.settings.one.SettingsFragmentOne"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -58,8 +61,8 @@
                     android:layout_weight="1"
                     app:item_name="N"
                     app:item_text="мг/кг"
-                    app:sf_min="@{limits.limitN.value.get(0).getMin()}"
-                    app:sf_max="@{limits.limitN.value.get(0).getMax()}"
+                    app:sf_min="@{limits.limitN.value.get(view.analyticalFactors.getAfN()).getMin()}"
+                    app:sf_max="@{limits.limitN.value.get(view.analyticalFactors.getAfN()).getMax()}"
                     app:sf_value="@={soilFactor.n}" />
 
 
@@ -354,7 +357,7 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
                 android:inputType="numberDecimal"
-                android:maxLength="3"
+                android:maxLength="4"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -427,7 +430,7 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="5"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

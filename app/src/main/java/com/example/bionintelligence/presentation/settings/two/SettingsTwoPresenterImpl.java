@@ -5,6 +5,8 @@ import android.util.Log;
 import com.example.bionintelligence.data.pojo.AnalyticalFactors;
 import com.example.bionintelligence.data.repositories.CalculatorRepositoryImpl;
 import com.example.bionintelligence.domain.repositories.CalculatorRepository;
+import com.example.bionintelligence.presentation.settings.one.SettingsFragmentOne;
+import com.example.bionintelligence.presentation.settings.one.SettingsOneView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -14,10 +16,12 @@ public class SettingsTwoPresenterImpl implements SettingsTwoPresenter {
     private SettingsTwoView settingsTwoView;
     private CalculatorRepository calculatorRepository;
     private CompositeDisposable compositeDisposable;
+    private SettingsOneView settingsOneView;
 
     SettingsTwoPresenterImpl(CalculatorRepositoryImpl calculatorRepository) {
         this.calculatorRepository = calculatorRepository;
         this.compositeDisposable = new CompositeDisposable();
+        settingsOneView = new SettingsFragmentOne();
     }
 
     @Override
@@ -37,6 +41,7 @@ public class SettingsTwoPresenterImpl implements SettingsTwoPresenter {
     @Override
     public void saveAnalyticalFactors(AnalyticalFactors analyticalFactors) {
         calculatorRepository.setAnalyticalFactors(analyticalFactors);
+        settingsOneView.refresh();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.bionintelligence.data.source;
 
+import android.util.Log;
+
 import com.example.bionintelligence.App;
 import com.example.bionintelligence.data.database.dao.CalculatorDao;
 import com.example.bionintelligence.data.database.dao.CultureDao;
@@ -163,6 +165,9 @@ public class DatabaseSourceImpl implements DatabaseSource {
     public void setSoilFactorsModel(SoilFactorsModel soilFactorsModel) {
         Completable.fromAction(() -> soilFactorsDao.insert(soilFactorsModel))
                 .subscribeOn(Schedulers.io())
+                .doOnError(throwable -> Log.d("Database",throwable.getMessage()))
+                .doOnComplete(() -> Log.d("Database",String.valueOf(soilFactorsModel.getPH())))
+                .doOnComplete(() -> Log.d("Database",String.valueOf(soilFactorsModel.getG())))
                 .subscribe();
     }
 

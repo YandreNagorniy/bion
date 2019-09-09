@@ -5,6 +5,7 @@ import android.databinding.InverseBindingAdapter;
 import android.databinding.InverseBindingListener;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.example.bionintelligence.presentation.custom.SoilFactorView;
@@ -63,11 +64,12 @@ public class InverseBindingAdapters {
 
     @InverseBindingAdapter(attribute = "sf_value")
     public static double getItemValue(EditText view) {
-        try {
+         try {
             return Double.valueOf(view.getText().toString());
         } catch (NumberFormatException n) {
             return 0.0;
         }
+
     }
 
     @InverseBindingAdapter(attribute = "sf_value")
@@ -95,6 +97,8 @@ public class InverseBindingAdapters {
             if (value < min) value = min;
             else if (value > max) value = max;
         }
+        Log.d("Inverse", String.valueOf(value));
         view.setText(String.valueOf(value));
+
     }
 }

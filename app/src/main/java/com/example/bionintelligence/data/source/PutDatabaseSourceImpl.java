@@ -103,10 +103,10 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
         SoilFactorsLimitsModel soilFactorsLimitsModel = new SoilFactorsLimitsModel(
                 new MinMaxListPojo(listNkimits), new MinMaxListPojo(listP2Okimits), new MinMaxListPojo(listK2Okimits),
                 new MinMaxPojo(0.1, 50),
-                new MinMaxPojo(0.1, 10), new MinMaxPojo(0.1, 100), new MinMaxPojo(0.01, 30),
-                new MinMaxPojo(0.1, 50), new MinMaxPojo(0.1, 10), new MinMaxPojo(0.1, 100),
-                new MinMaxPojo(0.01, 30), new MinMaxPojo(0.01, 10), new MinMaxPojo(0.01, 5),
-                new MinMaxPojo(0.01, 5), new MinMaxPojo(0.01, 5), new MinMaxPojo(0.01, 10));
+                new MinMaxPojo(0.1, 10), new MinMaxPojo(0.1, 100), new MinMaxPojo(0.01, 10),
+                new MinMaxPojo(0.1, 5), new MinMaxPojo(0.1, 30), new MinMaxPojo(0.1, 5),
+                new MinMaxPojo(0.01, 5), new MinMaxPojo(0.01, 10), new MinMaxPojo(0.01, 15),
+                new MinMaxPojo(0.5, 10), new MinMaxPojo(4, 10), new MinMaxPojo(10, 300));
 
         return Completable.fromAction(() -> soilFactorsLimitsDao.insert(soilFactorsLimitsModel));
     }

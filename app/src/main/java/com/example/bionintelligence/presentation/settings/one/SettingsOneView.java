@@ -10,4 +10,6 @@ public interface SettingsOneView {
     void receiveSoilFactorsLimits(SoilFactorsLimitsModel soilFactorsLimitsModel);
 
     void receiveAnalyticalFactors(AnalyticalFactors analyticalFactors);
+
+    void refresh();
 }

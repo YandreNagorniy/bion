@@ -7,9 +7,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -26,25 +28,26 @@ import com.example.bionintelligence.presentation.custom.SoilFactorView;
 
 import java.lang.ref.WeakReference;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
-public class SettingsFragmentOne extends Fragment implements SettingsOneView {
+import io.reactivex.Completable;
+import io.reactivex.disposables.Disposable;
+
+public class SettingsFragmentOne extends Fragment implements SettingsOneView, View.OnFocusChangeListener {
     private FragmentSettings1Binding binding;
     private SettingsOnePresenter settingsOnePresenter;
     private InputMethodManager inputMethodManager;
-    private SoilFactorsLimitsModel soilFactorsLimitsModel;
-    private AnalyticalFactors analyticalFactors;
+    public AnalyticalFactors analyticalFactors;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings1, container, false);
         settingsOnePresenter = new SettingsOnePresenterImpl(new CalculatorRepositoryImpl(
-                new LocalSourceImpl(new WeakReference<>(getActivity())), new DatabaseSourceImpl()));
+                new LocalSourceImpl(new WeakReference<>(getContext())), new DatabaseSourceImpl()));
         settingsOnePresenter.attachView(this);
         settingsOnePresenter.getSoilFactorsData();
-//        settingsOnePresenter.getSoilFactorsLimits();
         settingsOnePresenter.getAnalyticalFactors();
-        inputMethodManager = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
 
         return binding.getRoot();
     }
@@ -52,6 +55,7 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        inputMethodManager = (InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE);
         soilFactorsClickListener(binding.sfvN);
         soilFactorsClickListener(binding.sfvP2O5);
         soilFactorsClickListener(binding.sfvK2O);
@@ -77,7 +81,6 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
 
     @Override
     public void receiveSoilFactorsLimits(SoilFactorsLimitsModel soilFactorsLimitsModel) {
-        this.soilFactorsLimitsModel = soilFactorsLimitsModel;
         binding.setLimits(soilFactorsLimitsModel);
     }
 
@@ -87,6 +90,7 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
     }
 
     private void soilFactorsClickListener(SoilFactorView view) {
+        view.getEtItemValue().setOnFocusChangeListener(this);                                                   //слушатель фокуса
         view.setOnClickListener(v -> {                                                                          //слушатель нажатия на плитку (хим.элемент)
             view.getEtItemValue().requestFocus();
             view.getEtItemValue().setSelection(view.getEtItemValue().getText().length());                       //курсор справа
@@ -95,49 +99,40 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView {
 
         view.setOnEditorActionListener((v, actionId, event) -> {                                                //обработчик нажатия кнопки клавиатуры "Done" для SoilFactorView
             if (actionId == EditorInfo.IME_ACTION_DONE) {                                                       //если на клавиатуре выбрали DONE
-                String text = view.getEtItemValue().getText().toString();
-
-                view.getEtItemValue().setText(text);                                                            // добавляем новое значение во view
-                binding.setSoilFactor(binding.getSoilFactor());                                                 // обновляем данные из вью
-                settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor());                               //отдаем презентеру модель SoilFactor с новым значением
+                onFocusChange(view, false);
             }
             return false;
         });
     }
 
     private void soilFactorsClickListener(EditText view) {
+        view.setOnFocusChangeListener(this);
         view.setOnEditorActionListener((v, actionId, event) -> {
             //если была нажата кнопка "Done"
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                //получаем значение view и при небходимости форматируем текст
-                String text = view.getText().toString();
-
-                view.setText(text);
-//                if (TextUtils.isEmpty(text) || text.equals(".")) {
-//                    view.setText("0");
-//                }
-
-//                //пропускаем через double чтобы отформатировать строку
-//                double value = Double.valueOf(view.getText().toString());
-//                if (view.getId() == R.id.sf_ZPV) {
-//                    view.setText(String.valueOf((int) value));
-//                } else {
-//                    view.setText(String.valueOf(value));
-//                }
-//
-//                //ставим ограничения на значения
-//                if (view.getId() == R.id.sf_pH) {
-//                    if (value < 4) {
-//                        view.setText("4");
-//                    }
-//                    if (value > 10) {
-//                        view.setText("10");
-//                    }
-//                }
-                settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor());
+            if (actionId == EditorInfo.IME_ACTION_PREVIOUS) {
+                onFocusChange(view, false);
             }
             return false;
         });
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (!hasFocus) {                                                                               //если теряем фокус
+            binding.setSoilFactor(binding.getSoilFactor());
+            Completable.complete()
+                    .delay(100, TimeUnit.MILLISECONDS)
+                    .doOnComplete(() -> settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor()))
+                    .subscribe();
+        }
+    }
+
+    @Override
+    public void refresh() {
+        if (settingsOnePresenter != null) {
+            settingsOnePresenter.getSoilFactorsData();
+            settingsOnePresenter.getAnalyticalFactors();
+        }
     }
 
     @Override

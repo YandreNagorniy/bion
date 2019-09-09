@@ -80,12 +80,12 @@ public class SettingsFragmentTwo extends Fragment implements SettingsTwoView {
     }
 
     @Override
-    public void displayAnalyticalFactors(AnalyticalFactors analyticalFactors) {
+    public void displayAnalyticalFactors(AnalyticalFactors analyticalFactors) {                         // отображене нужного RadioButton
         this.analyticalFactors = analyticalFactors;
         switch (analyticalFactors.getAfN()) {
             case 1: {
                 binding.rbMineralN.setChecked(true);
-                binding.rbMineralN.jumpDrawablesToCurrentState();               //решение проблемы неполного заполнения rb
+                binding.rbMineralN.jumpDrawablesToCurrentState();                                       //решение проблемы неполного заполнения rb
             }
             break;
             case 2: {

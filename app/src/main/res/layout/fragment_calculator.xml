@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/bg_values_light_green"
+            android:background="@drawable/bg_values_fill_light_green"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
