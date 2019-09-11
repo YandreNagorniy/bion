@@ -3,7 +3,11 @@ package com.example.bionintelligence.data.source;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.f2prateek.rx.preferences2.RxSharedPreferences;
+
 import java.lang.ref.WeakReference;
+
+import io.reactivex.subjects.PublishSubject;
 
 public class LocalSourceImpl implements LocalSource {
     private static final String APP_SETTINGS = "app_settings";
@@ -17,6 +21,8 @@ public class LocalSourceImpl implements LocalSource {
     public LocalSourceImpl(WeakReference<Context> context) {
         sharedPreferences = context.get().getApplicationContext().getSharedPreferences(APP_SETTINGS, Context.MODE_PRIVATE);
     }
+
+    public static PublishSubject<Integer> subject = PublishSubject.create();
 
     @Override
     public int getSettingsCultureId() {
@@ -46,6 +52,7 @@ public class LocalSourceImpl implements LocalSource {
     @Override
     public void setAnalyticalFactorsN(int analyticalFactors1) {
         sharedPreferences.edit().putInt(ANALYTICAL_FACTORS_N, analyticalFactors1).apply();
+//        subject.onNext(analyticalFactors1);
     }
 
     @Override
@@ -56,6 +63,7 @@ public class LocalSourceImpl implements LocalSource {
     @Override
     public void setAnalyticalFactorsP2O5(int analyticalFactors2) {
         sharedPreferences.edit().putInt(ANALYTICAL_FACTORS_P2O5, analyticalFactors2).apply();
+//        subject.onNext(analyticalFactors2);
     }
 
     @Override
@@ -66,5 +74,6 @@ public class LocalSourceImpl implements LocalSource {
     @Override
     public void setAnalyticalFactorsK2O(int analyticalFactors3) {
         sharedPreferences.edit().putInt(ANALYTICAL_FACTORS_K2O, analyticalFactors3).apply();
+//        subject.onNext(analyticalFactors3);
     }
 }

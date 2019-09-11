@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.example.bionintelligence.R;
 import com.example.bionintelligence.presentation.custom.SoilFactorView;
 
 //two way binding from soilFactorsValue
@@ -64,12 +65,11 @@ public class InverseBindingAdapters {
 
     @InverseBindingAdapter(attribute = "sf_value")
     public static double getItemValue(EditText view) {
-         try {
+        try {
             return Double.valueOf(view.getText().toString());
         } catch (NumberFormatException n) {
             return 0.0;
         }
-
     }
 
     @InverseBindingAdapter(attribute = "sf_value")
@@ -88,7 +88,8 @@ public class InverseBindingAdapters {
             if (value < min) value = min;
             else if (value > max) value = max;
         }
-        view.setItemValue(String.valueOf(value));
+        if (value == 1000) view.setItemValue("1000");
+        else view.setItemValue(String.valueOf(value));
     }
 
     @BindingAdapter({"sf_value", "sf_min", "sf_max"})
@@ -97,8 +98,10 @@ public class InverseBindingAdapters {
             if (value < min) value = min;
             else if (value > max) value = max;
         }
-        Log.d("Inverse", String.valueOf(value));
-        view.setText(String.valueOf(value));
+        if (view.getId() == R.id.sf_ZPV)
+            view.setText(String.valueOf((int) value));
+        else
+            view.setText(String.valueOf(value));
 
     }
 }

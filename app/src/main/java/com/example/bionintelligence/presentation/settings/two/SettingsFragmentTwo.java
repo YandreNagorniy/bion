@@ -1,7 +1,9 @@
 package com.example.bionintelligence.presentation.settings.two;
 
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import com.example.bionintelligence.data.repositories.CalculatorRepositoryImpl;
 import com.example.bionintelligence.data.source.DatabaseSourceImpl;
 import com.example.bionintelligence.data.source.LocalSourceImpl;
 import com.example.bionintelligence.databinding.FragmentSettings2Binding;
+import com.f2prateek.rx.preferences2.RxSharedPreferences;
 
 import java.lang.ref.WeakReference;
 

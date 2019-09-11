@@ -21,11 +21,14 @@ import com.example.bionintelligence.domain.repositories.CalculatorRepository;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 
 public class CalculatorRepositoryImpl implements CalculatorRepository {
     private LocalSource localSource;
     private DatabaseSource databaseSource;
     private PutDatabaseSource putDatabaseSource;
+    public static PublishSubject<AnalyticalFactors> afPublishSubject = PublishSubject.create();
+
 
     public CalculatorRepositoryImpl(LocalSource localSource, DatabaseSource databaseSource) {
         this.localSource = localSource;
@@ -54,6 +57,8 @@ public class CalculatorRepositoryImpl implements CalculatorRepository {
         localSource.setAnalyticalFactorsN(analyticalFactors.getAfN());
         localSource.setAnalyticalFactorsP2O5(analyticalFactors.getAfP2O5());
         localSource.setAnalyticalFactorsK2O(analyticalFactors.getAfK2O());
+        afPublishSubject.onNext(analyticalFactors);
+
     }
 
     //Данные калькулятора

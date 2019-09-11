@@ -2,14 +2,15 @@ package com.example.bionintelligence.presentation.settings.one;
 
 import android.util.Log;
 
-import com.example.bionintelligence.data.model.SoilFactorsLimitsModel;
 import com.example.bionintelligence.data.model.SoilFactorsModel;
-import com.example.bionintelligence.data.pojo.AnalyticalFactors;
+import com.example.bionintelligence.data.repositories.CalculatorRepositoryImpl;
+import com.example.bionintelligence.data.source.LocalSourceImpl;
 import com.example.bionintelligence.domain.repositories.CalculatorRepository;
+
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class SettingsOnePresenterImpl implements SettingsOnePresenter {
@@ -20,6 +21,14 @@ public class SettingsOnePresenterImpl implements SettingsOnePresenter {
     SettingsOnePresenterImpl(CalculatorRepository calculatorRepository) {
         this.calculatorRepository = calculatorRepository;
         this.compositeDisposable = new CompositeDisposable();
+    }
+
+    @Override
+    public void onStart() {
+        compositeDisposable.add(CalculatorRepositoryImpl.afPublishSubject
+                .throttleFirst(100, TimeUnit.MILLISECONDS)
+                .subscribe(analyticalFactors -> settingsOneView.refresh(analyticalFactors),
+                        Throwable::printStackTrace));
     }
 
     @Override

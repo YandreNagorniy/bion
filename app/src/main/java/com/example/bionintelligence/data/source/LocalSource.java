@@ -1,5 +1,7 @@
 package com.example.bionintelligence.data.source;
 
+import com.f2prateek.rx.preferences2.Preference;
+
 public interface LocalSource {
 
     int getSettingsCultureId();

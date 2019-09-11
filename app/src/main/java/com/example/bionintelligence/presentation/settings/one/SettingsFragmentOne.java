@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 public class SettingsFragmentOne extends Fragment implements SettingsOneView, View.OnFocusChangeListener {
     private FragmentSettings1Binding binding;
@@ -44,9 +45,10 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView, Vi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings1, container, false);
         settingsOnePresenter = new SettingsOnePresenterImpl(new CalculatorRepositoryImpl(
-                new LocalSourceImpl(new WeakReference<>(getContext())), new DatabaseSourceImpl()));
+                new LocalSourceImpl(new WeakReference<>(getActivity())), new DatabaseSourceImpl()));
+
         settingsOnePresenter.attachView(this);
-        settingsOnePresenter.getSoilFactorsData();
+        settingsOnePresenter.onStart();
         settingsOnePresenter.getAnalyticalFactors();
 
         return binding.getRoot();
@@ -77,6 +79,10 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView, Vi
     @Override
     public void displaySoilFactors(SoilFactorsModel soilFactors) {
         binding.setSoilFactor(soilFactors);
+        Completable.complete()
+                .delay(100, TimeUnit.MILLISECONDS)
+                .doOnComplete(() -> settingsOnePresenter.setSoilFactorsData(binding.getSoilFactor()))
+                .subscribe();
     }
 
     @Override
@@ -86,7 +92,8 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView, Vi
 
     @Override
     public void receiveAnalyticalFactors(AnalyticalFactors analyticalFactors) {
-        this.analyticalFactors = analyticalFactors;
+        binding.setAnalyticalFactors(analyticalFactors);
+        settingsOnePresenter.getSoilFactorsData();
     }
 
     private void soilFactorsClickListener(SoilFactorView view) {
@@ -109,7 +116,7 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView, Vi
         view.setOnFocusChangeListener(this);
         view.setOnEditorActionListener((v, actionId, event) -> {
             //если была нажата кнопка "Done"
-            if (actionId == EditorInfo.IME_ACTION_PREVIOUS) {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
                 onFocusChange(view, false);
             }
             return false;
@@ -128,11 +135,8 @@ public class SettingsFragmentOne extends Fragment implements SettingsOneView, Vi
     }
 
     @Override
-    public void refresh() {
-        if (settingsOnePresenter != null) {
-            settingsOnePresenter.getSoilFactorsData();
-            settingsOnePresenter.getAnalyticalFactors();
-        }
+    public void refresh(AnalyticalFactors analyticalFactors) {
+        receiveAnalyticalFactors(analyticalFactors);
     }
 
     @Override

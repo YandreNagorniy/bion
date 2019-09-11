@@ -11,5 +11,5 @@ public interface SettingsOneView {
 
     void receiveAnalyticalFactors(AnalyticalFactors analyticalFactors);
 
-    void refresh();
+    void refresh(AnalyticalFactors analyticalFactors);
 }

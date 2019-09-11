@@ -150,7 +150,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
         methodsK2OList.add(new MethodsK2OModel("Среднее", 81, 120, 41, 80, 201, 300, 2.468, 4.702));
         methodsK2OList.add(new MethodsK2OModel("Повышенное", 121, 170, 81, 120, 301, 400, 2.577, 3.404));
         methodsK2OList.add(new MethodsK2OModel("Высокое", 171, 250, 121, 180, 401, 600, 2.338, 3.31));
-        methodsK2OList.add(new MethodsK2OModel("Очень высокое", 251, 999, 181, 999, 601, 999, 2.4, 3.333));
+        methodsK2OList.add(new MethodsK2OModel("Очень высокое", 251, 1000, 181, 1000, 601, 1000, 2.4, 3.333));
 
         return Completable.fromAction(() -> methodsK2ODao.insertList(methodsK2OList));
     }
@@ -160,12 +160,12 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
                 App.getInstance().getDatabase().methodsP2O5Dao();
 
         List<MethodsP2O5Model> methodsP2O5List = new ArrayList<>();
-        methodsP2O5List.add(new MethodsP2O5Model("Очень низкое", 1, 25, 1, 20, 1, 10, 0.4, 0.526));
+        methodsP2O5List.add(new MethodsP2O5Model("Очень низкое", 0, 25, 0, 20, 0, 10, 0.4, 0.526));
         methodsP2O5List.add(new MethodsP2O5Model("Низкое", 26, 50, 21, 50, 11, 15, 0.353, 0.372));
         methodsP2O5List.add(new MethodsP2O5Model("Среднее", 51, 100, 51, 100, 16, 30, 0.305, 0.341));
         methodsP2O5List.add(new MethodsP2O5Model("Повышенное", 101, 150, 101, 150, 31, 45, 0.303, 0.315));
         methodsP2O5List.add(new MethodsP2O5Model("Высокое", 151, 250, 151, 200, 46, 60, 0.265, 0.305));
-        methodsP2O5List.add(new MethodsP2O5Model("Очень высокое", 251, 999, 201, 999, 61, 999, 0.243, 0.3));
+        methodsP2O5List.add(new MethodsP2O5Model("Очень высокое", 251, 1000, 201, 1000, 61, 1000, 0.243, 0.3));
 
         return Completable.fromAction(() -> methodsP2O5Dao.insertList(methodsP2O5List));
     }
@@ -175,7 +175,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
                 App.getInstance().getDatabase().methodsNDao();
 
         List<MethodsNModel> methodsNList = new ArrayList<>();
-        methodsNList.add(new MethodsNModel("Очень низкое", 1, 30, 1, 100, 1, 5, 0.167, 0.05));
+        methodsNList.add(new MethodsNModel("Очень низкое", 0, 30, 0, 100, 0, 5, 0.167, 0.05));
         methodsNList.add(new MethodsNModel("Низкое", 31, 40, 101, 150, 6, 8, 0.197, 0.056));
         methodsNList.add(new MethodsNModel("Среднее", 41, 50, 151, 200, 9, 15, 0.26, 0.067));
         methodsNList.add(new MethodsNModel("Повышенное", 51, 70, 201, 300, 16, 30, 0.371, 0.09));

@@ -50,28 +50,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     break;
             }
         });
-
-//        binding.bottomNavigationView
-//                .setOnNavigationItemSelectedListener(menuItem -> {
-//                    switch (menuItem.getItemId()) {
-//                        case R.id.action_calculator: {
-//                            showFragment(calculatorFragment);
-//                            if (calculatorFragment.isAdded())
-//                                calculatorFragment.refresh();
-//                            break;
-//                        }
-//                        case R.id.action_settings:
-//                            showFragment(settingsFragmentMain);
-//                            break;
-//                        case R.id.action_product:
-//                            showFragment(infoFragment);
-//                            break;
-//                        case R.id.action_contacts:
-//                            showFragment(contactsFragment);
-//                            break;
-//                    }
-//                    return true;
-//                });
     }
 
     private void addFragment() {

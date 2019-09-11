@@ -15,6 +15,7 @@ import com.example.bionintelligence.domain.entities.CalculateP2O5Entity;
 import com.example.bionintelligence.domain.entities.CalculateSEntity;
 import com.example.bionintelligence.domain.entities.CalculatorParams;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 public interface CalculatorRepository {

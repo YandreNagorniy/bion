@@ -12,9 +12,10 @@
         <variable
             name="limits"
             type="com.example.bionintelligence.data.model.SoilFactorsLimitsModel" />
+
         <variable
-            name="view"
-            type="com.example.bionintelligence.presentation.settings.one.SettingsFragmentOne"/>
+            name="analyticalFactors"
+            type="com.example.bionintelligence.data.pojo.AnalyticalFactors" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -61,10 +62,9 @@
                     android:layout_weight="1"
                     app:item_name="N"
                     app:item_text="мг/кг"
-                    app:sf_min="@{limits.limitN.value.get(view.analyticalFactors.getAfN()).getMin()}"
-                    app:sf_max="@{limits.limitN.value.get(view.analyticalFactors.getAfN()).getMax()}"
+                    app:sf_max="@{limits.limitN.value.get(analyticalFactors.afN-1).getMax()}"
+                    app:sf_min="@{limits.limitN.value.get(analyticalFactors.afN-1).getMin()}"
                     app:sf_value="@={soilFactor.n}" />
-
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
                     android:id="@+id/sfv_P2O5"
@@ -75,8 +75,8 @@
                     android:layout_weight="1"
                     app:item_name="P2O5"
                     app:item_text="мг/кг"
-                    app:sf_max="@{limits.limitP2O5.value.get(0).getMax()}"
-                    app:sf_min="@{limits.limitP2O5.value.get(0).getMin()}"
+                    app:sf_max="@{limits.limitP2O5.value.get(analyticalFactors.afP2O5-1).getMax()}"
+                    app:sf_min="@{limits.limitP2O5.value.get(analyticalFactors.afP2O5-1).getMin()}"
                     app:sf_value="@={soilFactor.p2O5}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
@@ -86,8 +86,8 @@
                     android:layout_weight="1"
                     app:item_name="K2O"
                     app:item_text="мг/кг"
-                    app:sf_max="@{limits.limitK2O.value.get(0).getMax()}"
-                    app:sf_min="@{limits.limitK2O.value.get(0).getMin()}"
+                    app:sf_max="@{limits.limitK2O.value.get(analyticalFactors.afK2O-1).getMax()}"
+                    app:sf_min="@{limits.limitK2O.value.get(analyticalFactors.afK2O-1).getMin()}"
                     app:sf_value="@={soilFactor.k2O}" />
             </TableRow>
 
@@ -113,9 +113,9 @@
                     android:layout_marginEnd="3dp"
                     android:layout_weight="1"
                     app:item_name="MgO"
+                    app:item_text="мг-экв 100г."
                     app:sf_max="@{limits.limitMgO.max}"
                     app:sf_min="@{limits.limitMgO.min}"
-                    app:item_text="мг-экв 100г."
                     app:sf_value="@={soilFactor.mgO}" />
 
                 <com.example.bionintelligence.presentation.custom.SoilFactorView
