@@ -7,18 +7,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.TextUtils;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.SuperscriptSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 import com.example.bionintelligence.R;
 import com.example.bionintelligence.data.model.CalculatorModel;
@@ -40,7 +36,7 @@ import java.util.Objects;
 import static android.app.Activity.RESULT_OK;
 
 
-public class CalculatorFragment extends Fragment implements CalculatorView {
+public class CalculatorFragment extends Fragment implements CalculatorView, View.OnFocusChangeListener {
     private FragmentCalculatorBinding binding;
     private CalculatorPresenter calculatorPresenter;
     private TestCultureModel cultureModel;
@@ -74,7 +70,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView {
 
         binding.clSelectCulture.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), CultureActivity.class);
-            intent.putExtra(getString(R.string.cultureId), cultureModel.getCultureId());                //для выделения цвета
+            intent.putExtra(getString(R.string.cultureId), cultureModel.getCultureId());                                  //для выделения цвета
             startActivityForResult(intent, 1);
         });
 
@@ -96,6 +92,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView {
     }
 
     private void keyboardCustomListener(ChemistryView view) {
+        view.getEtItemValue().setOnFocusChangeListener(this);                                                   //слушатель фокуса
         view.setOnClickListener(v -> {                                                                  //слушатель нажатия на плитку (хим.элемент)
             view.getEtItemValue().requestFocus();
             view.getEtItemValue().setSelection(view.getEtItemValue().getText().length());               //курсор справа
@@ -111,7 +108,8 @@ public class CalculatorFragment extends Fragment implements CalculatorView {
                 } else {
                     newValue = Integer.parseInt(v.getText().toString());
                 }
-                calculatorPresenter.calculateProductive(cultureModel.getCultureId(), view.getTvItemName(), newValue, binding.numberPicker.getValue());
+                calculatorPresenter.calculateProductive(
+                        cultureModel.getCultureId(), view.getTvItemName(), newValue, binding.numberPicker.getValue());
                 return false;
             }
             return false;
@@ -175,6 +173,14 @@ public class CalculatorFragment extends Fragment implements CalculatorView {
     public void displayRefreshData(int productive) {
         binding.numberPicker.setValue(productive);
         calculatorPresenter.getCalculatorData(productive, cultureModel.getCultureId());
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (!hasFocus) {                                                                               //если теряем фокус
+          if(Objects.requireNonNull(((AppCompatEditText) v).getText()).toString().equals(""))          //если фокус был снят и текст остался пустым
+            ((AppCompatEditText) v).setText("0");
+        }
     }
 
     @Override
