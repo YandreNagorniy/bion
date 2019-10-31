@@ -29,7 +29,6 @@ public class CalculatorRepositoryImpl implements CalculatorRepository {
     private PutDatabaseSource putDatabaseSource;
     public static PublishSubject<AnalyticalFactors> afPublishSubject = PublishSubject.create();
 
-
     public CalculatorRepositoryImpl(LocalSource localSource, DatabaseSource databaseSource) {
         this.localSource = localSource;
         this.databaseSource = databaseSource;

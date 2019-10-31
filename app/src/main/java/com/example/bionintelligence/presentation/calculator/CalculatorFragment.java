@@ -158,7 +158,6 @@ public class CalculatorFragment extends Fragment implements CalculatorView, View
         calculatorPresenter.getNewPhasesData(cultureModel.getPhasesModelList(), newProductive);
     }
 
-
     // изменение размера текста
     private void changeTextSize() {
         binding.tvNecessaryBion2.setText(Html.fromHtml(getString(R.string.text_calculator_necessary_bion2)));

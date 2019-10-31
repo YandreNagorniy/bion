@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "75db481fde9b9a3c491cf6ce2e7d07a0",
+    "identityHash": "efd2a690fb750694115ad8660cdf4234",
     "entities": [
       {
         "tableName": "CalculatorModel",
@@ -1152,11 +1152,205 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "SoilFactorsLimitsModel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `limitN` TEXT, `limitP2O5` TEXT, `limitK2O` TEXT, `caomin` REAL, `caomax` REAL, `mgomin` REAL, `mgomax` REAL, `smin` REAL, `smax` REAL, `znmin` REAL, `znmax` REAL, `cumin` REAL, `cumax` REAL, `mnmin` REAL, `mnmax` REAL, `comin` REAL, `comax` REAL, `momin` REAL, `momax` REAL, `bmin` REAL, `bmax` REAL, `femin` REAL, `femax` REAL, `gmin` REAL, `gmax` REAL, `phmin` REAL, `phmax` REAL, `zpvmin` REAL, `zpvmax` REAL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "limitN",
+            "columnName": "limitN",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitP2O5",
+            "columnName": "limitP2O5",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitK2O",
+            "columnName": "limitK2O",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitCaO.min",
+            "columnName": "caomin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitCaO.max",
+            "columnName": "caomax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitMgO.min",
+            "columnName": "mgomin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitMgO.max",
+            "columnName": "mgomax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitS.min",
+            "columnName": "smin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitS.max",
+            "columnName": "smax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitZn.min",
+            "columnName": "znmin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitZn.max",
+            "columnName": "znmax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitCu.min",
+            "columnName": "cumin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitCu.max",
+            "columnName": "cumax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitMn.min",
+            "columnName": "mnmin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitMn.max",
+            "columnName": "mnmax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitCo.min",
+            "columnName": "comin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitCo.max",
+            "columnName": "comax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitMo.min",
+            "columnName": "momin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitMo.max",
+            "columnName": "momax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitB.min",
+            "columnName": "bmin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitB.max",
+            "columnName": "bmax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitFe.min",
+            "columnName": "femin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitFe.max",
+            "columnName": "femax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitG.min",
+            "columnName": "gmin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitG.max",
+            "columnName": "gmax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitPH.min",
+            "columnName": "phmin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitPH.max",
+            "columnName": "phmax",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitzpv.min",
+            "columnName": "zpvmin",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "limitzpv.max",
+            "columnName": "zpvmax",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"75db481fde9b9a3c491cf6ce2e7d07a0\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"efd2a690fb750694115ad8660cdf4234\")"
     ]
   }
 }

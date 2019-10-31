@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bion intelligence</string>
+    <string name="app_name">Бион</string>
     <string name="select_culture">Выберите культуру</string>
     <string name="number_piker_text">700</string>
     <string name="yield_text">Задайте урожайность, ц/га</string>

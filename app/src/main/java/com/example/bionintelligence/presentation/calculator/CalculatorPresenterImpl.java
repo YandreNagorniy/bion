@@ -52,7 +52,8 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
         compositeDisposable.add(calculatorRepository.getCalculatorParams()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(params -> getCultureModel(params.getCultureId())));
+                .subscribe(params -> getCultureModel(params.getCultureId()),
+                        Throwable::printStackTrace));
     }
 
     @Override
@@ -61,8 +62,8 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .map(ElementMapper::mapToCalculatorModel)
-                .subscribe(calculatorModel ->
-                        calculatorView.displayCalculatorData(calculatorModel)));
+                .subscribe(calculatorModel -> calculatorView.displayCalculatorData(calculatorModel),
+                        Throwable::printStackTrace));
     }
 
     @Override
@@ -71,7 +72,8 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(testCultureModel ->
-                        calculatorView.displayCultureData(testCultureModel), Throwable::printStackTrace));
+                                calculatorView.displayCultureData(testCultureModel),
+                        Throwable::printStackTrace));
     }
 
     @Override
@@ -79,7 +81,8 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
         compositeDisposable.add(getProductiveUseCase.execute(new ProductiveParams(cultureId, itemName, newValue, productive))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(newProductive -> calculatorView.displayNewProductive(newProductive)));
+                .subscribe(newProductive -> calculatorView.displayNewProductive(newProductive),
+                        Throwable::printStackTrace));
     }
 
     @Override
@@ -88,7 +91,8 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .map(testPhasesModels -> PhasesValueMapper.mapPhasesByProductive(testPhasesModels, productive))
-                .subscribe(phasesModel -> calculatorView.displayPhasesData(phasesModel))
+                .subscribe(phasesModel -> calculatorView.displayPhasesData(phasesModel),
+                        Throwable::printStackTrace)
         );
     }
 
@@ -98,7 +102,8 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(testPhasesModels -> PhasesNewValueMapper.mapPhasesByProductive(testPhasesModels, newProductive))
-                .subscribe(phasesModel -> calculatorView.displayNewPhasesData(phasesModel))
+                .subscribe(phasesModel -> calculatorView.displayNewPhasesData(phasesModel),
+                        Throwable::printStackTrace)
         );
     }
 
@@ -107,7 +112,8 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
         compositeDisposable.add(calculatorRepository.getCalculatorParams()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(params -> calculatorView.displayRefreshData(params.getProductive())));
+                .subscribe(params -> calculatorView.displayRefreshData(params.getProductive()),
+                        Throwable::printStackTrace));
     }
 
     @Override

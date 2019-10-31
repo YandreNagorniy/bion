@@ -8,7 +8,7 @@ import com.example.bionintelligence.data.database.AppDatabase;
 public class App extends Application {
     public static App instance;
     private AppDatabase database;
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 4;
 
     @Override
     public void onCreate() {
