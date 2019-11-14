@@ -6,6 +6,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_margin="3dp"
+        android:maxHeight="190dp"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">

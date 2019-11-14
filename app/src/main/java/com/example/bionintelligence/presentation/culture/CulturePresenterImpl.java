@@ -25,7 +25,8 @@ public class CulturePresenterImpl implements CulturePresenter {
     public void getCultureData() {
         compositeDisposable.add(cultureRepository.getCultureData()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(cultureModelList -> cultureView.displayData(cultureModelList),
+                .subscribe(cultureModelList ->
+                                cultureView.displayData(cultureModelList),
                         Throwable::printStackTrace));
     }
 

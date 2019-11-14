@@ -7,9 +7,13 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.bionintelligence.R;
 import com.example.bionintelligence.data.pojo.AnalyticalFactors;
@@ -41,6 +45,18 @@ public class SettingsFragmentTwo extends Fragment implements SettingsTwoView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // изменение размера текста для H2O и K2O
+        Spannable k2o = new SpannableString("K2O");
+        k2o.setSpan(new RelativeSizeSpan(0.6f), 1, 2, 0);
+        binding.tvElementK2O.setText(k2o, TextView.BufferType.SPANNABLE);
+
+        // изменение размера текста для P2O5
+        Spannable p2o5 = new SpannableString("P2O5");
+        p2o5.setSpan(new RelativeSizeSpan(0.6f), 1, 2, 0);
+        p2o5.setSpan(new RelativeSizeSpan(0.6f), 3, 4, 0);
+        binding.tvElementP2O5.setText(p2o5, TextView.BufferType.SPANNABLE);
+
         binding.rgN.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.rb_mineralN:

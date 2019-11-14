@@ -2,8 +2,11 @@ package com.example.bionintelligence.presentation.main;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.example.bionintelligence.R;
 import com.example.bionintelligence.databinding.ActivityMainBinding;
@@ -23,34 +26,55 @@ public class MainActivity extends AppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         //todo для создания фрагмента принято деать отдельный статический метод типа getInstance()
-        //todo чекни https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
         calculatorFragment = new CalculatorFragment();
         settingsFragmentMain = new SettingsFragmentMain();
         contactsFragment = new ContactsFragment();
         infoFragment = new InfoFragment();
         addFragment();
 
-
-        binding.bottomMenu.setOnBottomMenuClickListener(position -> {
-            switch (position) {
-                case 0: {
+        binding.bottomMenu.setItemIconTintList(null);
+        binding.bottomMenu.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.action_calculator: {
                     showFragment(calculatorFragment);
                     if (calculatorFragment.isAdded())
                         calculatorFragment.refresh();
                     break;
                 }
-                case 1:
+                case R.id.action_settings:
                     showFragment(settingsFragmentMain);
                     break;
-                case 2:
+                case R.id.action_product:
                     showFragment(infoFragment);
                     break;
-                case 3:
+               default:
                     showFragment(contactsFragment);
                     break;
             }
+            return true;
         });
+
+//        binding.bottomMenu.setOnBottomMenuClickListener(position -> {
+//            switch (position) {
+//                case 0: {
+//                    showFragment(calculatorFragment);
+//                    if (calculatorFragment.isAdded())
+//                        calculatorFragment.refresh();
+//                    break;
+//                }
+//                case 1:
+//                    showFragment(settingsFragmentMain);
+//                    break;
+//                case 2:
+//                    showFragment(infoFragment);
+//                    break;
+//                case 3:
+//                    showFragment(contactsFragment);
+//                    break;
+//            }
+//        });
     }
+
 
     private void addFragment() {
         getSupportFragmentManager()

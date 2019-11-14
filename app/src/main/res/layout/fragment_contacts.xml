@@ -165,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/phone_subTitle"
                 android:textSize="16sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/tv_contactsNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_contactsNumber" />
 
@@ -185,6 +186,7 @@
             <TextView
                 android:id="@+id/tv_mailSubTitle"
                 android:layout_width="wrap_content"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:text="@string/mail_subTitle"
                 app:layout_constraintStart_toStartOf="@+id/tv_contactsNumber"

@@ -7,5 +7,9 @@ public interface PutDatabaseSource {
 
     void setLocalDataBaseVersion(int dataBaseVersion);
 
+    String getLastTimeVisitedApp();
+
+    void setLastTimeVisitedApp(String lastTimeVisitedApp);
+
     Completable fillDataInDB();
 }

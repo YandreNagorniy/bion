@@ -44,6 +44,7 @@ import io.reactivex.Completable;
 
 public class PutDatabaseSourceImpl implements PutDatabaseSource {
     private static final String LOCAL_DATABASE_VERSION = "local_database_version";
+    private static final String LAST_TIME_VISITED_APP = "last_time_visited_app";
     private static final String APP_SETTINGS = "app_settings";
     private SharedPreferences sharedPreferences;
 
@@ -59,6 +60,16 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     @Override
     public void setLocalDataBaseVersion(int isFull) {
         sharedPreferences.edit().putInt(LOCAL_DATABASE_VERSION, isFull).apply();
+    }
+
+    @Override
+    public String getLastTimeVisitedApp() {
+        return sharedPreferences.getString(LAST_TIME_VISITED_APP, "04-нояб.-2019");
+    }
+
+    @Override
+    public void setLastTimeVisitedApp(String lastTimeVisitedApp) {
+        sharedPreferences.edit().putString(LAST_TIME_VISITED_APP, lastTimeVisitedApp).apply();
     }
 
     @Override
@@ -438,15 +449,15 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
         springRapePhasesList.add(new TestPhasesModel(50, 5.3, 7, 5.3, -1, -1, -1));
 
         List<TestPhasesModel> springWheatPhasesList = new ArrayList<>();
-        springWheatPhasesList.add(new TestPhasesModel(20, 0, 0, 0, 0, -1, -1));
-        springWheatPhasesList.add(new TestPhasesModel(30, 0.2, 0.2, 0.2, 0.2, -1, -1));
-        springWheatPhasesList.add(new TestPhasesModel(40, 0.4, 0.4, 0.4, 0.4, -1, -1));
-        springWheatPhasesList.add(new TestPhasesModel(50, 0.8, 0.8, 0.8, 0.8, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(20, 1, 0, 0, 0, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(30, 1, 0.2, 0.2, 0.2, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(40, 1, 0.4, 0.4, 0.4, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(50, 1, 0.8, 0.8, 0.8, -1, -1));
         springWheatPhasesList.add(new TestPhasesModel(60, 1, 1, 1, 1, -1, -1));
-        springWheatPhasesList.add(new TestPhasesModel(70, 1.3, 1.3, 1.3, 1.3, -1, -1));
-        springWheatPhasesList.add(new TestPhasesModel(80, 1.8, 1.8, 1.8, 1.8, -1, -1));
-        springWheatPhasesList.add(new TestPhasesModel(90, 2.4, 2.4, 2.4, 2.4, -1, -1));
-        springWheatPhasesList.add(new TestPhasesModel(100, 3.1, 3.1, 3.1, 3.1, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(70, 1, 1.3, 1.3, 1.3, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(80, 1, 1.8, 1.8, 1.8, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(90, 1, 2.4, 2.4, 2.4, -1, -1));
+        springWheatPhasesList.add(new TestPhasesModel(100, 1, 3.1, 3.1, 3.1, -1, -1));
 
         List<TestPhasesModel> chickpeaPhasesList = new ArrayList<>();
         chickpeaPhasesList.add(new TestPhasesModel(5, 0, 0, 0, -1, -1, -1));
@@ -480,7 +491,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
         cultureList.add(new TestCultureModel(6, "Подсолнечник", 15, 35, 50, 5, R.drawable.img_sun_flower, sunFlowerPhasesList, phasesImgList.get(5)));
         cultureList.add(new TestCultureModel(7, "Озимый рапс", 20, 40, 70, 10, R.drawable.img_rape, winterRapePhasesList, phasesImgList.get(6)));
         cultureList.add(new TestCultureModel(8, "Яровой рапс", 15, 25, 50, 5, R.drawable.img_rape, springRapePhasesList, phasesImgList.get(7)));
-        cultureList.add(new TestCultureModel(9, "Яровой пшеница", 20, 60, 100, 10, R.drawable.img_winter_wheat, springWheatPhasesList, phasesImgList.get(8)));
+        cultureList.add(new TestCultureModel(9, "Яровая пшеница", 20, 60, 100, 10, R.drawable.img_winter_wheat, springWheatPhasesList, phasesImgList.get(8)));
         cultureList.add(new TestCultureModel(10, "Нут", 10, 25, 45, 5, R.drawable.img_chickpea, chickpeaPhasesList, phasesImgList.get(9)));
 
         TestCultureDao testCultureDao = App.getInstance().getDatabase().testCultureDao();

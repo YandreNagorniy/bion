@@ -63,7 +63,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView, View
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.numberPicker.setValueChangedListener((value, action) -> {
-            binding.etNewPrdouctive.setVisibility(View.GONE);
+//            binding.etNewPrdouctive.setVisibility(View.GONE);
             calculatorPresenter.getCalculatorData(value, cultureModel.getCultureId());
             calculatorPresenter.getPhasesData(cultureModel.getPhasesModelList(), value);
         });
@@ -146,14 +146,14 @@ public class CalculatorFragment extends Fragment implements CalculatorView, View
 
     @Override
     public void displayNewProductive(Integer newProductive) {
-        binding.etNewPrdouctive.setVisibility(View.VISIBLE);
+//        binding.etNewPrdouctive.setVisibility(View.VISIBLE);
         if (newProductive > cultureModel.getProductiveMax()) {
             newProductive = cultureModel.getProductiveMax();
         }
         if (newProductive < cultureModel.getProductiveMin()) {
             newProductive = cultureModel.getProductiveMin();
         }
-        binding.etNewPrdouctive.setText(String.valueOf(newProductive));
+//        binding.etNewPrdouctive.setText(String.valueOf(newProductive));
         calculatorPresenter.getCalculatorData(newProductive, cultureModel.getCultureId());
         calculatorPresenter.getNewPhasesData(cultureModel.getPhasesModelList(), newProductive);
     }
@@ -177,14 +177,19 @@ public class CalculatorFragment extends Fragment implements CalculatorView, View
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (!hasFocus) {                                                                               //если теряем фокус
-          if(Objects.requireNonNull(((AppCompatEditText) v).getText()).toString().equals(""))          //если фокус был снят и текст остался пустым
-            ((AppCompatEditText) v).setText("0");
+            if (Objects.requireNonNull(((AppCompatEditText) v).getText()).toString().equals(""))          //если фокус был снят и текст остался пустым
+                ((AppCompatEditText) v).setText("0");
         }
     }
 
     @Override
-    public void onDestroy() {
+    public void onStop() {
         calculatorPresenter.setParamsData(new CalculatorParams(binding.numberPicker.getValue(), cultureModel.getCultureId()));
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
         calculatorPresenter.detachView();
         super.onDestroy();
     }

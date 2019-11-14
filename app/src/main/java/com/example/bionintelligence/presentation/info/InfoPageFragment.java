@@ -36,7 +36,7 @@ public class InfoPageFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_info_child, container, false);
-        binding.tvPageText.setTextSize(15);
+        binding.tvPageText.setTextSize(14);
 
         if (pageNumber == 0) {
             binding.tvPageText.setText(R.string.text_info1);

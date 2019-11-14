@@ -71,8 +71,7 @@ public class CalculatorPresenterImpl implements CalculatorPresenter {
         compositeDisposable.add(calculatorRepository.getTestCultureModel(cultureId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(testCultureModel ->
-                                calculatorView.displayCultureData(testCultureModel),
+                .subscribe(testCultureModel -> calculatorView.displayCultureData(testCultureModel),
                         Throwable::printStackTrace));
     }
 

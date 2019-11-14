@@ -18,6 +18,16 @@ public class PutDatabaseRepositoryImpl implements PutDatabaseRepository {
     }
 
     @Override
+    public String getLastTimeVisitedApp() {
+        return putDatabaseSource.getLastTimeVisitedApp();
+    }
+
+    @Override
+    public void setLastTimeVisitedApp(String lastTimeVisitedApp) {
+        putDatabaseSource.setLastTimeVisitedApp(lastTimeVisitedApp);
+    }
+
+    @Override
     public Completable addStartDataFromDb(int databaseVersion) {
         return putDatabaseSource.fillDataInDB()
                 .doOnError(Throwable::printStackTrace)

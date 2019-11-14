@@ -20,6 +20,7 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/calculator_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="16dp"
