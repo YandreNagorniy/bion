@@ -32,4 +32,7 @@ public interface SoilFactorsDao {
 
     @Query("DELETE FROM SoilFactorsModel WHERE id IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM SoilFactorsModel")
+    void deleteTable();
 }

@@ -36,6 +36,9 @@ public interface MethodsP2O5Dao {
     @Query("DELETE FROM MethodsP2O5Model WHERE id IS :id")
     void deleteById(int id);
 
+    @Query("DELETE FROM MethodsP2O5Model")
+    void deleteTable();
+
 //        @Update
 //    void update(SettingsRepository user);
 }

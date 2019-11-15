@@ -14,7 +14,6 @@ import io.reactivex.Single;
 
 @Dao
 public interface VinosDao {
-
     @Query("SELECT * FROM VinosModel")
     Flowable<List<VinosModel>> getList();
 
@@ -29,4 +28,7 @@ public interface VinosDao {
 
     @Query("DELETE FROM VinosModel WHERE id IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM VinosModel")
+    void deleteTable();
 }

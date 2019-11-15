@@ -95,6 +95,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     private Completable setSoilFactorsLimit() {
 
         SoilFactorsLimitsDao soilFactorsLimitsDao = App.getInstance().getDatabase().soilFactorsLimitDao();
+        soilFactorsLimitsDao.deleteTable();
 
         List<MinMaxPojo> listNkimits = new ArrayList<>();
         listNkimits.add(new MinMaxPojo(0.1, 100));
@@ -124,6 +125,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
 
     private Completable setSoilFactorsData() {
         SoilFactorsDao soilFactorsDao = App.getInstance().getDatabase().soilFactorsDao();
+        soilFactorsDao.deleteTable();
 
         List<SoilFactorsModel> soilFactorsList = new ArrayList<>();
         soilFactorsList.add(new SoilFactorsModel(15, 30, 350, 25, 3, 3,
@@ -133,8 +135,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     }
 
     private Completable setKUsvData() {
-        KUsvDao kUsvDao =
-                App.getInstance().getDatabase().kUsvDao();
+        KUsvDao kUsvDao = App.getInstance().getDatabase().kUsvDao();
+        kUsvDao.deleteTable();
 
         List<KUsvModel> kUsvList = new ArrayList<>();
         kUsvList.add(new KUsvModel(1, 0.6, 0.25, 0.13, 0.06, 0.125, 0.5));
@@ -152,8 +154,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     }
 
     private Completable setMethodsK20() {
-        MethodsK2ODao methodsK2ODao =
-                App.getInstance().getDatabase().methodsK2ODao();
+        MethodsK2ODao methodsK2ODao = App.getInstance().getDatabase().methodsK2ODao();
+        methodsK2ODao.deleteTable();
 
         List<MethodsK2OModel> methodsK2OList = new ArrayList<>();
         methodsK2OList.add(new MethodsK2OModel("Очень низкое", 1, 40, 1, 20, 1, 100, 2.295, 4.985));
@@ -167,8 +169,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     }
 
     private Completable setMethodsP2O5() {
-        MethodsP2O5Dao methodsP2O5Dao =
-                App.getInstance().getDatabase().methodsP2O5Dao();
+        MethodsP2O5Dao methodsP2O5Dao = App.getInstance().getDatabase().methodsP2O5Dao();
+        methodsP2O5Dao.deleteTable();
 
         List<MethodsP2O5Model> methodsP2O5List = new ArrayList<>();
         methodsP2O5List.add(new MethodsP2O5Model("Очень низкое", 0, 25, 0, 20, 0, 10, 0.4, 0.526));
@@ -182,8 +184,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     }
 
     private Completable setMethodsN() {
-        MethodsNDao methodsNDao =
-                App.getInstance().getDatabase().methodsNDao();
+        MethodsNDao methodsNDao = App.getInstance().getDatabase().methodsNDao();
+        methodsNDao.deleteTable();
 
         List<MethodsNModel> methodsNList = new ArrayList<>();
         methodsNList.add(new MethodsNModel("Очень низкое", 0, 30, 0, 100, 0, 5, 0.167, 0.05));
@@ -198,8 +200,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
 
 
     private Completable setPHData() {
-        PHDao phDao =
-                App.getInstance().getDatabase().phDao();
+        PHDao phDao = App.getInstance().getDatabase().phDao();
+        phDao.deleteTable();
 
         List<PHModel> phList = new ArrayList<>();
         phList.add(new PHModel(4.0, 0.37, 0.3, 0.3, 0.2, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2, 0.2, 0.18, 1));
@@ -271,6 +273,7 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     private Completable setPrecipitationRequirementsData() {
         PrecipitationRequirementsDao precipitationRequirementsDao =
                 App.getInstance().getDatabase().precipitationRequirementsDao();
+        precipitationRequirementsDao.deleteTable();
 
         List<PrecipitationRequirementsModel> precipitationRequirementsModelList = new ArrayList<>();
         precipitationRequirementsModelList.add(new PrecipitationRequirementsModel(1, 261));
@@ -288,8 +291,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     }
 
     private Completable setVinosData() {
-        VinosDao vinosDao =
-                App.getInstance().getDatabase().vinosDao();
+        VinosDao vinosDao = App.getInstance().getDatabase().vinosDao();
+        vinosDao.deleteTable();
 
         List<VinosModel> vinosList = new ArrayList<>();
         vinosList.add(new VinosModel(1, 3.13, 0.9, 2.15, 0.67, 0.35, 0.55));
@@ -307,8 +310,8 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     }
 
     private Completable setWaterConsumptionData() {
-        WaterConsumptionDao waterConsumptionDao =
-                App.getInstance().getDatabase().waterConsumptionDao();
+        WaterConsumptionDao waterConsumptionDao = App.getInstance().getDatabase().waterConsumptionDao();
+        waterConsumptionDao.deleteTable();
 
         List<WaterConsumptionModel> waterConsumptionModelList = new ArrayList<>();
         waterConsumptionModelList.add(new WaterConsumptionModel(1, 135));
@@ -326,8 +329,9 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
     }
 
     private Completable setCalculatorData() {
-        CalculatorDao calculatorDao =
-                App.getInstance().getDatabase().calculatorDao();
+        CalculatorDao calculatorDao = App.getInstance().getDatabase().calculatorDao();
+        calculatorDao.deleteTable();
+
         CalculatorModel calculatorModel =
                 new CalculatorModel(0, 0, 0, 0, 0, 0, 0);
 
@@ -337,23 +341,26 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
 
     private Completable setCultureData() {
         CultureDao cultureDao = App.getInstance().getDatabase().cultureDao();
+        cultureDao.deleteTable();
 
         List<CultureModel> cultureList = new ArrayList<>();
-        cultureList.add(new CultureModel("Озимая пшеница", R.drawable.img_winter_wheat));
-        cultureList.add(new CultureModel("Кукуруза", R.drawable.img_corn));
-        cultureList.add(new CultureModel("Сахарная свекла", R.drawable.img_sugar_beet));
-        cultureList.add(new CultureModel("Соя", R.drawable.img_soy));
-        cultureList.add(new CultureModel("Картофель", R.drawable.img_potatoes));
-        cultureList.add(new CultureModel("Подсолнечник", R.drawable.img_sun_flower));
-        cultureList.add(new CultureModel("Озимый рапс", R.drawable.img_rape));
-        cultureList.add(new CultureModel("Яровой рапс", R.drawable.img_rape));
-        cultureList.add(new CultureModel("Яровая пшеница", R.drawable.img_winter_wheat));
-        cultureList.add(new CultureModel("Нут", R.drawable.img_chickpea));
+        cultureList.add(new CultureModel(1, "Озимая пшеница", R.drawable.img_winter_wheat));
+        cultureList.add(new CultureModel(2, "Кукуруза", R.drawable.img_corn));
+        cultureList.add(new CultureModel(3, "Сахарная свекла", R.drawable.img_sugar_beet));
+        cultureList.add(new CultureModel(4, "Соя", R.drawable.img_soy));
+        cultureList.add(new CultureModel(5, "Картофель", R.drawable.img_potatoes));
+        cultureList.add(new CultureModel(6, "Подсолнечник", R.drawable.img_sun_flower));
+        cultureList.add(new CultureModel(7, "Озимый рапс", R.drawable.img_rape));
+        cultureList.add(new CultureModel(8, "Яровой рапс", R.drawable.img_rape));
+        cultureList.add(new CultureModel(9, "Яровая пшеница", R.drawable.img_winter_wheat));
+        cultureList.add(new CultureModel(10, "Нут", R.drawable.img_chickpea));
 
         return Completable.fromAction(() -> cultureDao.insertList(cultureList));
     }
 
     private Completable setTestCultureModel() {
+        TestCultureDao testCultureDao = App.getInstance().getDatabase().testCultureDao();
+        testCultureDao.deleteTable();
 
         List<TestPhasesModel> winterWheatPhasesList = new ArrayList<>();
         winterWheatPhasesList.add(new TestPhasesModel(30, 0, 0, 0, 0, 0, -1));
@@ -493,8 +500,6 @@ public class PutDatabaseSourceImpl implements PutDatabaseSource {
         cultureList.add(new TestCultureModel(8, "Яровой рапс", 15, 25, 50, 5, R.drawable.img_rape, springRapePhasesList, phasesImgList.get(7)));
         cultureList.add(new TestCultureModel(9, "Яровая пшеница", 20, 60, 100, 10, R.drawable.img_winter_wheat, springWheatPhasesList, phasesImgList.get(8)));
         cultureList.add(new TestCultureModel(10, "Нут", 10, 25, 45, 5, R.drawable.img_chickpea, chickpeaPhasesList, phasesImgList.get(9)));
-
-        TestCultureDao testCultureDao = App.getInstance().getDatabase().testCultureDao();
 
         return Completable.fromAction(() -> testCultureDao.insertList(cultureList));
     }

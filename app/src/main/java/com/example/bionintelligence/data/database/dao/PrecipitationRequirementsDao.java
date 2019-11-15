@@ -29,4 +29,7 @@ public interface PrecipitationRequirementsDao {
 
     @Query("DELETE FROM PrecipitationRequirementsModel WHERE id IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM PrecipitationRequirementsModel")
+    void deleteTable();
 }

@@ -2,7 +2,9 @@ package com.example.bionintelligence.presentation.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import com.example.bionintelligence.R;
 public class PhaseView extends FrameLayout {
     private EditText et_phaseValue;
     private ImageView et_phaseImage;
+    private ConstraintLayout container;
 
     public PhaseView(Context context) {
         this(context, null);
@@ -29,7 +32,10 @@ public class PhaseView extends FrameLayout {
         TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.PhaseView);
 
         Float phaseValue = array.getFloat(R.styleable.PhaseView_phase_value, 0);
-
+        container = findViewById(R.id.container);
+        LayoutParams layoutParams = (LayoutParams) container.getLayoutParams();
+        layoutParams.gravity = Gravity.CENTER_VERTICAL;
+        container.setLayoutParams(layoutParams);
         et_phaseValue = findViewById(R.id.et_phaseValue);
         et_phaseImage = findViewById(R.id.iv_phaseImage);
 

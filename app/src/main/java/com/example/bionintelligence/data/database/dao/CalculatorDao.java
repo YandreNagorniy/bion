@@ -88,4 +88,6 @@ public interface CalculatorDao {
     @Query("Select pH_S From PHModel where pH_pH is :sf_pH")
     Single<Double> getPhS(double sf_pH);
 
+    @Query("DELETE FROM CalculatorModel")
+    void deleteTable();
 }

@@ -36,4 +36,6 @@ public interface MethodsK2ODao {
     @Query("DELETE FROM MethodsK2OModel WHERE id IS :id")
     void deleteById(int id);
 
+    @Query("DELETE FROM MethodsK2OModel")
+    void deleteTable();
 }

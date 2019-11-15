@@ -5,13 +5,14 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity
 public class CultureModel {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     private int id;
     private String cultureName;
     private int imgLink;
 
 
-    public CultureModel(String cultureName, int imgLink) {
+    public CultureModel(int id, String cultureName, int imgLink) {
+        this.id= id;
         this.cultureName = cultureName;
         this.imgLink = imgLink;
     }

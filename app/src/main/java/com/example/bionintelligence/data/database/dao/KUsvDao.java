@@ -29,4 +29,7 @@ public interface KUsvDao {
 
     @Query("DELETE FROM KUsvModel WHERE id IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM KUsvModel")
+    void deleteTable();
 }

@@ -30,7 +30,8 @@ public interface PHDao {
     @Query("DELETE FROM PHModel WHERE id IS :id")
     void deleteById(int id);
 
-
+    @Query("DELETE FROM PHModel")
+    void deleteTable();
 //        @Update
 //    void update(SettingsRepository user);
 }

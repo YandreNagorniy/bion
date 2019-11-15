@@ -30,4 +30,7 @@ public interface TestCultureDao {
 
     @Query("DELETE FROM TestCultureModel WHERE cultureId IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM TestCultureModel")
+    void deleteTable();
 }

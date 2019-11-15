@@ -35,4 +35,7 @@ public interface MethodsNDao {
 
     @Query("DELETE FROM MethodsNModel WHERE id IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM MethodsNModel")
+    void deleteTable();
 }

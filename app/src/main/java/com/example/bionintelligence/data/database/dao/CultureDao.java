@@ -29,4 +29,7 @@ public interface CultureDao {
 
     @Query("DELETE FROM CultureModel WHERE id IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM CultureModel")
+    void deleteTable();
 }

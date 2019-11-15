@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_margin="3dp"
-        android:maxHeight="190dp"
         android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:minHeight="136dp"
+        android:maxHeight="160dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 

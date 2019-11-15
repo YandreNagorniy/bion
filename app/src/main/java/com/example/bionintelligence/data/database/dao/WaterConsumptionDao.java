@@ -29,4 +29,7 @@ public interface WaterConsumptionDao {
 
     @Query("DELETE FROM WaterConsumptionModel WHERE id IS :id")
     void deleteById(int id);
+
+    @Query("DELETE FROM WaterConsumptionModel")
+    void deleteTable();
 }

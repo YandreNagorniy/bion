@@ -19,4 +19,6 @@ public interface SoilFactorsLimitsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(SoilFactorsLimitsModel soilFactorsLimitsModel);
 
+    @Query("DELETE FROM SoilFactorsLimitsModel")
+    void deleteTable();
 }
