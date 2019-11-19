@@ -7,15 +7,15 @@
 
         <variable
             name="element"
-            type="com.example.bionintelligence.data.model.CalculatorModel" />
+            type="com.bionagro.bionintelligence.data.model.CalculatorModel" />
 
         <variable
             name="cultureModel"
-            type="com.example.bionintelligence.data.model.TestCultureModel" />
+            type="com.bionagro.bionintelligence.data.model.TestCultureModel" />
 
         <variable
             name="phaseValue"
-            type="com.example.bionintelligence.data.model.TestPhasesModel" />
+            type="com.bionagro.bionintelligence.data.model.TestPhasesModel" />
 
     </data>
 
@@ -129,7 +129,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.example.bionintelligence.presentation.custom.ChemistryView
+            <com.bionagro.bionintelligence.presentation.custom.ChemistryView
                 android:id="@+id/chv_N"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_chemistryTitle" />
 
-            <com.example.bionintelligence.presentation.custom.ChemistryView
+            <com.bionagro.bionintelligence.presentation.custom.ChemistryView
                 android:id="@+id/chv_P2O5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                 app:layout_constraintStart_toEndOf="@id/chv_N"
                 app:layout_constraintTop_toTopOf="@+id/chv_N" />
 
-            <com.example.bionintelligence.presentation.custom.ChemistryView
+            <com.bionagro.bionintelligence.presentation.custom.ChemistryView
                 android:id="@+id/chv_K2O"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                 app:layout_constraintStart_toEndOf="@id/chv_P2O5"
                 app:layout_constraintTop_toTopOf="@+id/chv_N" />
 
-            <com.example.bionintelligence.presentation.custom.ChemistryView
+            <com.bionagro.bionintelligence.presentation.custom.ChemistryView
                 android:id="@+id/chv_S"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/chv_N" />
 
-            <com.example.bionintelligence.presentation.custom.ChemistryView
+            <com.bionagro.bionintelligence.presentation.custom.ChemistryView
                 android:id="@+id/chv_CaO"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
                 app:layout_constraintStart_toEndOf="@id/chv_S"
                 app:layout_constraintTop_toTopOf="@+id/chv_S" />
 
-            <com.example.bionintelligence.presentation.custom.ChemistryView
+            <com.bionagro.bionintelligence.presentation.custom.ChemistryView
                 android:id="@+id/chv_MgO"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
                 app:layout_constraintStart_toEndOf="@id/chv_CaO"
                 app:layout_constraintTop_toTopOf="@+id/chv_S" />
 
-            <com.example.bionintelligence.presentation.custom.ChemistryView
+            <com.bionagro.bionintelligence.presentation.custom.ChemistryView
                 android:id="@+id/chv_H2O"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -239,7 +239,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_necessaryBion" />
 
-        <com.example.bionintelligence.presentation.custom.PhaseView
+        <com.bionagro.bionintelligence.presentation.custom.PhaseView
             android:id="@+id/phaseView_one"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -252,7 +252,7 @@
             app:phase_img="@{cultureModel.phasesImgModel.phaseImgOne}"
             app:phase_value="@{phaseValue.phaseOne}" />
 
-        <com.example.bionintelligence.presentation.custom.PhaseView
+        <com.bionagro.bionintelligence.presentation.custom.PhaseView
             android:id="@+id/phaseView_two"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -263,7 +263,7 @@
             app:phase_img="@{cultureModel.phasesImgModel.phaseImgTwo}"
             app:phase_value="@{phaseValue.phaseTwo}" />
 
-        <com.example.bionintelligence.presentation.custom.PhaseView
+        <com.bionagro.bionintelligence.presentation.custom.PhaseView
             android:id="@+id/phaseView_three"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -274,7 +274,7 @@
             app:phase_img="@{cultureModel.phasesImgModel.phaseImgThree}"
             app:phase_value="@{phaseValue.phaseThree}" />
 
-        <com.example.bionintelligence.presentation.custom.PhaseView
+        <com.bionagro.bionintelligence.presentation.custom.PhaseView
             android:id="@+id/phaseView_four"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -285,7 +285,7 @@
             app:phase_img="@{cultureModel.phasesImgModel.phaseImgFour}"
             app:phase_value="@{phaseValue.phaseFour}" />
 
-        <com.example.bionintelligence.presentation.custom.PhaseView
+        <com.bionagro.bionintelligence.presentation.custom.PhaseView
             android:id="@+id/phaseView_five"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -296,7 +296,7 @@
             app:phase_img="@{cultureModel.phasesImgModel.phaseImgFive}"
             app:phase_value="@{phaseValue.phaseFive}" />
 
-        <com.example.bionintelligence.presentation.custom.PhaseView
+        <com.bionagro.bionintelligence.presentation.custom.PhaseView
             android:id="@+id/phaseView_six"
             android:layout_width="0dp"
             android:layout_height="0dp"
